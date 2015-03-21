@@ -33,6 +33,7 @@
 \listoftodos
 \newpage
 
+
 \section{Cel projektu}
 Systemy informatyczne współczesnych organizacji stają się układami otwartymi, których głównym zadaniem jest zautomatyzowana komunikacja z partnerami biznesowymi, klientami i instytucjami. Rodzi to zapotrzebowanie na aplikacje będące w stanie wyręczyć użytkownika w wielu czynnościach, pozostawiając mu tylko podjęcie niezbędnych decyzji.
 
@@ -40,10 +41,9 @@ Jedną z czynności, dla której możliwe jest odciążenie użytkownika jest pr
 
 Wynikiem projektu będzie w pełni funkcjonalny system mobilny złożony z wielu autonomicznych agentów, którzy będą reprezentować specjalistów oraz instytucje ich poszukujące. Będziemy rozpatrywać otoczenie branży IT.
 
-\section{Opis problemu}
-\todo{dokończyć (opisac wysokopoziomowo co system bedzie robil)}
 
-Poszukiwanie pracy niesie ze sobą wiele powtarzalnych i żmudnych czynności, które można powierzyć inteligentnemu agentowi, którego zadaniem będzie odszukanie dostępnych ofert, przefiltrowanie i przekazanie użytkownikowi tylko tych, które są zgodne z podanymi warunkami.
+\section{Opis problemu}
+Poszukiwanie pracy niesie ze sobą wiele powtarzalnych i żmudnych czynności, które można powierzyć inteligentnemu agentowi, którego zadaniem będzie odszukanie dostępnych ofert, przefiltrowanie i przekazanie użytkownikowi tylko tych, które są zgodne z podanymi przez niego oczekiwaniami.
 \\
 Problem będziemy rozpatrywać z dwóch stron:
 \begin{enumerate}
@@ -51,31 +51,41 @@ Problem będziemy rozpatrywać z dwóch stron:
 	\item poszukiwania specjalistów spełniających kryteria rekrutacyjne.
 \end{enumerate}
 
-System ogłaszania ofert będzie oparty na tzw. `poczcie pantoflowej' \footnote{\url{http://pl.wiktionary.org/wiki/poczta_pantoflowa}}. Oferty pracy będą przekazywane do pracowników i subskrybentów, którzy będą mogli przekazać ofertę innym agentom ze swojego otoczenia.
+System ogłaszania ofert będzie oparty na tzw. `poczcie pantoflowej' \footnote{\url{http://pl.wiktionary.org/wiki/poczta_pantoflowa}} wewnątrz sieci kontaktów oraz na tzw. `tablicy', czyli miejscu, do którego wszyscy mają dostęp. Oferty pracy będą przekazywane do pracowników i subskrybentów, którzy będą mogli przekazać ofertę innym agentom ze swojego otoczenia.
 
 
 \subsection{Poszukiwanie pracy przez programistę}
-Pierwszą grupą użytkowników końcowych, do których adresowane jest to rozwiązanie są programiści poszukujący pracy. 
-System będzie udostępniał każdemu z użytkowników interfejs mobilny, \todo{a może jednak web wystarczy??} w którym będzie mógł w przystępny sposób przeglądać listę dostępnych ofert pracy przygotowaną w oparciu o zdefiniowane przez niego preferencje. 
+Pierwszą grupą użytkowników końcowych, do których adresowane jest to rozwiązanie są programiści poszukujący pracy.
+
+By dobrać dobrze dopasowaną ofertę, czyli taką, której wymagania pokrywają się w dużej części z umiejętnościami kandydata, programista będzie musiał wypełnić ankietę posiadanych umięjętności oraz zdobytego doświadczenia zawodowego \todo{nice to have: integracja z zewnętrznym serwisem np. LinkedIn}. Każda umiejętności będzie posiadała ocenę z zakresu 1-5 świadczącą o poziomie zaawansowania, dodatkowo będzie możliwość podlinkowania projektu potwierdzającego umiejętność.
+
+System będzie udostępniał każdemu z użytkowników interfejs webowy, w którym będzie mógł w przystępny sposób przeglądać listę dostępnych ofert pracy przygotowaną w oparciu o zdefiniowane przez niego preferencje.
+
 Proces przygotowywania ofert będzie odbywał się w oparciu o komunikację P2P \footnote{(ang. \emph{Peer-to-Peer}) \url{http://pl.wikipedia.org/wiki/Peer-to-peer}} między autonomicznymi agentami, bez centralnego zarządzania.
-\todo{Coś konkretniej dopisać}
+
+Programista będzie mógł zbudować własną siatkę kontaktów, w której agenci będą wymieniali się aktualnymi ofertami. Moduł ten będzie brany pod uwagę w doborze oferty, np. osoba, którą mamy w kontaktach będzie mogła napisać krótką recenzję na temat pracodawcy, czy stanowiska. Możliwe będzie również wysyłanie grupie znajomych polecanych ofert.
+
+
 \subsection{Poszukiwanie specjalistów}
-\todo{Poszukiwanie specjalistów}
+Moduł ten będzie aplikacją dostępną dla firm poszukujących programistów o odpowiednim profilu.
 
+Pracownicy działu HR będą mogli tworzyć profile o pożądanych przez ich firmy umiejętnościach i doświadczeniu, a także dołączać do oferty informacje o proponowanym stanowisku oraz oferowanych bonusach (jak karta multiSport, czy wynagrodzenie).
 
-\section{Specyfikacja funkcjonalna}
-\todo{szczegółowy opis problemu z wymienionymi funkcjonalnościami}
+Oferty pracy będą ogłaszane na tzw. rynku pracy \todo{propozycja: agent w postaci servisów restowych, który będzie wyszukiwał oferty z miejsca `rynek' z podanymi parametrami} oraz przesyłane w formie biuletynu pracownikom.
+
+W module dla pracodawcy będzie możliwe również ustalenie automatycznych etapów rekrutacji, np. wysłanie propozycji pracy, porównanie umiejętności, wysłanie i sprawdzenie testu teoretycznego/praktycznego.
 
 
 \section{Techniczny opis systemu}
-\todo{Potrzebne przemyslenie by zaczac klepac, ale do specyfikacji wstepnej sekcja nie musi wejsc.
-podsekcje:
--uzyte technologie i co nam daja
--podział na moduły
--architektura}
+\todo{ten pkt. wydaje mi się niepotrzeby, uściślił bym go później}
+System będzie stworzony przy pomocy technologii agentowej. Środowiskiem `życia' agenta będzie platforma JADE \todo{wstępnie}. Dostęp do platformy odbywać się będzie przez aplikację webową.
+
+Projekt nie zakłada implementacji aplikacji dedykowanej na urządzenia mobilne, głównym powodem takiej decyzji jest specyfika rozpatrywanego problemu, poszukiwanie pracy wiąże się z conajwyżej kilkukrotnym logowaniem do platformy w ciągu dnia, więc nie jest wymagany stały nadzór. Plusem tego rozwiązania jest możliwość korzystania na wielu urządzeniach (komputer, tablet, telefon) oraz oszczędzenie zasobów urządzeń mobilnych.
 
 
 \section{Koncepcja eksperymentu- scenariusze testowe}
-\todo{opis potwierdzony przykładami w jaki sposób mamy zamiar potwierdzić poprawne działanie systemu, czyli opi scenariuszy użycia od prostych po zaawansowane, np. (najprostszy przyklad) Javowiec poszukuje pracy na stanowisko senior developer, jest taka oferta na rynku i uzytkownik jest o niej informowany.}
+W celu potwierdzenia poprawności działania systemu zostaną stworzone scenariusze testowe, które będą obrazować działanie systemu. Zostaną nakreślone proste scenariusze potwierdzające poszczególne funkcjonalności jak i pożądanie działanie systemu w rozbudowanych warunkach.
+
+Scenariusze zostaną przedstawione jako funkcje IN/OUT, które będą przyjmować na wejściu stan środowiska: dostępnych użytkowników, oferty pracy, a na wyjściu oczekiwany rezultat, jak: programista zdobył pracę, lub oferta została rozesłana do wszystkich pracowników.
 	
 \end{document}
