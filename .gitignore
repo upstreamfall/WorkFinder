@@ -1,3 +1,15 @@
+# Jade
+*.txt
+
+# Gradle https://github.com/github/gitignore/blob/master/Gradle.gitignore
+.gradle
+build/
+# Ignore Gradle GUI config
+gradle-app.setting
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+
 *.class
 
 # Mobile Tools for Java (J2ME)

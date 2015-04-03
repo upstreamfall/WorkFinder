@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://jade.tilab.com/maven/'
+    }
+}
+
+dependencies {
+    compile 'com.tilab.jade:jade:4.3.3'
+}
+
+task execute(type:JavaExec) {
+    main = 'jade.Boot'
+    classpath = sourceSets.main.runtimeClasspath
+    args '-agents', 'basic:pl.edu.pw.mini.agents.workfinder.BasicAgent'
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
