@@ -5,6 +5,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.WakerBehaviour;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
@@ -12,11 +13,12 @@ public class ProgrammerAgent extends Agent {
 
     private ProgrammerSkills simpleSkills;
 
-    private AID employer = new AID("employer1", AID.ISLOCALNAME);
+    private DFAgentDescription[] employers = new DFAgentDescription[0];
+    private DFAgentManager dfAgentManager = new DFAgentManager();
 
     @Override
     protected void setup() {
-        System.out.printf("Hello! I'm " + getAID().getName());
+        System.out.println("Hello! I'm " + getAID().getName());
 
         simpleSkills = new ProgrammerSkills();
         simpleSkills.setSpecialization("Java");
@@ -25,7 +27,7 @@ public class ProgrammerAgent extends Agent {
         addBehaviour(new WakerBehaviour(this, 1000) {
             @Override
             protected void onWake() {
-                addBehaviour(new FindJobBehaviour(employer));
+                addBehaviour(new FindJobBehaviour());
             }
         });
     }
@@ -40,19 +42,22 @@ public class ProgrammerAgent extends Agent {
     private class FindJobBehaviour extends Behaviour {
 
         private int stage = 0;
-        private AID employer;
         private MessageTemplate mt;
-
-        public FindJobBehaviour(AID employer){
-            this.employer = employer;
-        }
 
         @Override
         public void action() {
             switch (stage){
                 case 0:
+                    employers = dfAgentManager.searchForService(myAgent, "job-offering");
+                    if (employers!= null && employers.length > 0 ) {
+                        stage++;
+                    }
+                    break;
+                case 1:
                     ACLMessage callForJob = new ACLMessage(ACLMessage.CFP);
-                    callForJob.addReceiver(employer);
+                    for (DFAgentDescription agentDescription : employers){
+                        callForJob.addReceiver(agentDescription.getName());
+                    }
                     callForJob.setContent(simpleSkills.getSpecialization());
                     callForJob.setConversationId("testId");
                     callForJob.setReplyWith("job" + System.currentTimeMillis());
@@ -61,9 +66,9 @@ public class ProgrammerAgent extends Agent {
                     mt = MessageTemplate.and(MessageTemplate.MatchConversationId("testId"),
                             MessageTemplate.MatchInReplyTo(callForJob.getReplyWith()));
 
-                    stage = 1;
+                    stage++;
                     break;
-                case 1:
+                case 2:
                     ACLMessage reply = myAgent.receive(mt);
                     if (reply != null) {
                         if (reply.getPerformative() == ACLMessage.AGREE) {
@@ -73,7 +78,7 @@ public class ProgrammerAgent extends Agent {
                             System.out.println("Agent " + getAID() + " is to weak to get a good job!");
                         }
 
-                        stage = 2;
+                        stage++;
                         takeDown();
                     }
                     else {
@@ -85,7 +90,7 @@ public class ProgrammerAgent extends Agent {
 
         @Override
         public boolean done() {
-            return stage == 2;
+            return stage == 3;
         }
     }
 }

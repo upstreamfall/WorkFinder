@@ -46,4 +46,12 @@ public class DFAgentManager {
 
         return null;
     }
+
+    public void deregister(Agent agent){
+        try {
+            DFService.deregister(agent);
+        } catch (FIPAException e) {
+            e.printStackTrace();
+        }
+    }
 }
