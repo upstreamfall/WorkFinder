@@ -17,7 +17,8 @@ dependencies {
 task execute(type:JavaExec) {
     main = 'jade.Boot'
     classpath = sourceSets.main.runtimeClasspath
-    args '-agents', 'programmer1:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;employer1:pl.edu.pw.mini.agents.workfinder.EmployerAgent'
+    args '-agents', 'programmer1:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;' +
+            '        employer1:pl.edu.pw.mini.agents.workfinder.EmployerAgent'
 }
 
 

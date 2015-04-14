@@ -4,6 +4,7 @@ package pl.edu.pw.mini.agents.workfinder;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.WakerBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
@@ -21,7 +22,12 @@ public class ProgrammerAgent extends Agent {
         simpleSkills.setSpecialization("Java");
         simpleSkills.setExperienceYears(2);
 
-        addBehaviour(new FindJobBehaviour(employer));
+        addBehaviour(new WakerBehaviour(this, 1000) {
+            @Override
+            protected void onWake() {
+                addBehaviour(new FindJobBehaviour(employer));
+            }
+        });
     }
 
     @Override
