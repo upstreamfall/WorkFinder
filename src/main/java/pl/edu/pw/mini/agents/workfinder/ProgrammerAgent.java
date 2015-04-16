@@ -1,17 +1,17 @@
 package pl.edu.pw.mini.agents.workfinder;
 
 
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.WakerBehaviour;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import pl.edu.pw.mini.agents.workfinder.cvdata.ProgrammerSkill;
 
 public class ProgrammerAgent extends Agent {
 
-    private ProgrammerSkills simpleSkills;
+    private ProgrammerSkill simpleSkills;
 
     private DFAgentDescription[] employers = new DFAgentDescription[0];
     private DFAgentManager dfAgentManager = new DFAgentManager();
@@ -20,7 +20,7 @@ public class ProgrammerAgent extends Agent {
     protected void setup() {
         System.out.println("Hello! I'm " + getAID().getName());
 
-        simpleSkills = new ProgrammerSkills();
+        simpleSkills = new ProgrammerSkill();
         simpleSkills.setSpecialization("Java");
         simpleSkills.setExperienceYears(2);
 

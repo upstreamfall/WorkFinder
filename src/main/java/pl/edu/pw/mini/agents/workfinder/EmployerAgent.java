@@ -1,26 +1,24 @@
 package pl.edu.pw.mini.agents.workfinder;
 
 
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.WakerBehaviour;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import pl.edu.pw.mini.agents.workfinder.cvdata.ProgrammerSkill;
 
 import java.util.Random;
 
 public class EmployerAgent extends Agent {
 
-    private ProgrammerSkills simpleSkills;
+    private ProgrammerSkill simpleSkills;
     private DFAgentManager dfAgentManager = new DFAgentManager();
 
     @Override
     protected void setup() {
         System.out.println("Hello! I'm " + getAID().getName());
 
-        simpleSkills = new ProgrammerSkills();
+        simpleSkills = new ProgrammerSkill();
         simpleSkills.setSpecialization("Java");
         Random rand = new Random();
         simpleSkills.setExperienceYears(rand.nextInt(2));

@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.agents.workfinder;
+package pl.edu.pw.mini.agents.workfinder.cvdata;
 
 import java.util.Date;
 
@@ -11,7 +11,6 @@ public class PersonData {
     private Date birthday;  //205-04-16
     private int phone;      //555-223-445
     private String placeOfLiving;   //Warsaw, ul. Jana Pawła 23
-    //...
 
     public String getName() {
         return name;

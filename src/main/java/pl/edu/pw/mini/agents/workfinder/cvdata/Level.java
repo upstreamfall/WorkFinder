@@ -1,4 +1,4 @@
-package pl.edu.pw.mini.agents.workfinder;
+package pl.edu.pw.mini.agents.workfinder.cvdata;
 
 public enum Level{
     Low,
