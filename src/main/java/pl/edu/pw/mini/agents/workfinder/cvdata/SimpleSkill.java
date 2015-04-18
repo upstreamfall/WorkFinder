@@ -25,4 +25,3 @@ public class SimpleSkill {
         this.frameworkName = frameworkName;
     }
 }
-
