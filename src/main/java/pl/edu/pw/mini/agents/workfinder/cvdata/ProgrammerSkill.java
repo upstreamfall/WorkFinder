@@ -1,26 +1,21 @@
 package pl.edu.pw.mini.agents.workfinder.cvdata;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by pawel.bielicki on 2015-04-13.
  */
-
-//TODO
-//How synchronize frameworks list with projects?
 public class ProgrammerSkill {
 
     private String specialization;
     private int experienceYears;
     private Map<String, Level> frameworks;
-    private List<ProjectExperience> projects;
+    private Map<String, Level> languages;
 
     public ProgrammerSkill() {
         frameworks = new HashMap<>();
-        projects = new ArrayList<>();
+        languages = new HashMap<>();
     }
 
     public void setSpecialization(String specialization) {
@@ -39,19 +34,19 @@ public class ProgrammerSkill {
         return experienceYears;
     }
 
-    public List<ProjectExperience> getProjects() {
-        return projects;
-    }
-
-    public void setProjects(List<ProjectExperience> projects) {
-        this.projects = projects;
-    }
-
     public void addSkill(String framework, Level level){
         frameworks.put(framework, level);
     }
 
     public void removeSkill(String framework){
         frameworks.remove(framework);
+    }
+
+    public void addLanguage(String language, Level level){
+        languages.put(language, level);
+    }
+
+    public void removeLanguage(String language){
+        languages.remove(language);
     }
 }
