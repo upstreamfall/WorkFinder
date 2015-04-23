@@ -11,7 +11,7 @@ public class ExtendedAgent extends Agent {
         return getAID().getLocalName();
     }
 
-    protected void printMessage(String message) {
+    public void printMessage(String message) {
         System.out.println("Agent " + getAgentName() + " " + message);
     }
 }
