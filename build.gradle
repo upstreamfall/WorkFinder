@@ -22,9 +22,9 @@ dependencies {
 task execute(type:JavaExec) {
     main = 'jade.Boot'
     classpath = sourceSets.main.runtimeClasspath
-    args '-agents', 'programmer_1:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;' +
+    args '-agents', 'programmer_1:pl.edu.pw.mini.agents.workfinder.programmer.ProgrammerAgent;' +
                     'employer1:pl.edu.pw.mini.agents.workfinder.EmployerAgent;' +
-                    'programmer_2:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;'
+                    'programmer_2:pl.edu.pw.mini.agents.workfinder.programmer.ProgrammerAgent;'
 }
 configure(execute) {
     group = 'run'
