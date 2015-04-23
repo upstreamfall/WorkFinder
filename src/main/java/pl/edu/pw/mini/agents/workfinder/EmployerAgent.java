@@ -48,28 +48,30 @@ public class EmployerAgent extends ExtendedAgent {
         public void action() {
             switch (stage) {
                 case 0:
-                    ACLMessage msg = myAgent.receive();
-                    if (msg != null) {
-                        printMessage("receive message: " + msg.getContent());
-                        if (msg.getPerformative() == ACLMessage.CFP) {
-                            String programmerSpec = msg.getContent();
-                            ACLMessage reply = msg.createReply();
-                            if (programmerSpec.equals(simpleSkills.getSpecialization())) {
-                                printMessage("found programmer with " + simpleSkills.getSpecialization() + " skills!");
-                                reply.setPerformative(ACLMessage.AGREE);
-                            }
-                            else {
-                                printMessage("receive a poor CV!");
-                                reply.setPerformative(ACLMessage.REFUSE);
-                            }
-                            myAgent.send(reply);
-//                            stage = 1;
-//                            takeDown();
-                        } else {
-                            block();
-                        }
-                    }
+                    waitForProposal();
                     break;
+            }
+        }
+
+        private void waitForProposal() {
+            ACLMessage msg = myAgent.receive();
+            if (msg != null) {
+                printMessage("receive message: " + msg.getContent());
+                if (msg.getPerformative() == ACLMessage.CFP) {
+                    String programmerSpec = msg.getContent();
+                    ACLMessage reply = msg.createReply();
+                    if (programmerSpec.equals(simpleSkills.getSpecialization())) {
+                        printMessage("found programmer with " + simpleSkills.getSpecialization() + " skills!");
+                        reply.setPerformative(ACLMessage.AGREE);
+                    }
+                    else {
+                        printMessage("receive a poor CV!");
+                        reply.setPerformative(ACLMessage.REFUSE);
+                    }
+                    myAgent.send(reply);
+                } else {
+                    block();
+                }
             }
         }
 
