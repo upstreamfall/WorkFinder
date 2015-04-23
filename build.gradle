@@ -8,19 +8,33 @@ repositories {
     maven {
         url 'http://jade.tilab.com/maven/'
     }
+    maven {
+        url 'http://com.github.oxo42'
+    }
 }
 
 dependencies {
     compile 'com.tilab.jade:jade:4.3.3'
+    compile 'com.tilab.jade:jade-test-suite:1.12.0'
 }
 
 task execute(type:JavaExec) {
     main = 'jade.Boot'
     classpath = sourceSets.main.runtimeClasspath
-    args '-agents', 'programmer1:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;' +
-            '        employer1:pl.edu.pw.mini.agents.workfinder.EmployerAgent'
+    args '-agents', 'programmer_1:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;' +
+                    'employer1:pl.edu.pw.mini.agents.workfinder.EmployerAgent;' +
+                    'programmer_2:pl.edu.pw.mini.agents.workfinder.ProgrammerAgent;'
+}
+configure(execute) {
+    group = 'run'
+    description = 'Run with different configurations'
 }
 
+task runGuiTests(type:JavaExec) {
+    main = 'test.common.testSuite.TestSuiteAgent'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'testerList.xml'
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'

@@ -1,40 +1,36 @@
 package pl.edu.pw.mini.agents.workfinder;
 
-
-import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.core.behaviours.WakerBehaviour;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
+import pl.edu.pw.mini.agents.workfinder.cvdata.PersonData;
 import pl.edu.pw.mini.agents.workfinder.cvdata.ProgrammerSkill;
+import pl.edu.pw.mini.agents.workfinder.utils.PropertiesFileLoader;
 
-public class ProgrammerAgent extends Agent {
+import java.io.*;
+import java.util.Properties;
+import java.util.Random;
+
+public class ProgrammerAgent extends ExtendedAgent {
 
     private ProgrammerSkill simpleSkills;
+    private PersonData personData;
 
     private DFAgentDescription[] employers = new DFAgentDescription[0];
     private DFAgentManager dfAgentManager = new DFAgentManager();
 
     @Override
     protected void setup() {
-        System.out.println("Hello! I'm " + getAID().getName());
-
-        simpleSkills = new ProgrammerSkill();
-        simpleSkills.setSpecialization("Java");
-        simpleSkills.setExperienceYears(2);
-
-        addBehaviour(new WakerBehaviour(this, 1000) {
-            @Override
-            protected void onWake() {
-                addBehaviour(new FindJobBehaviour());
-            }
-        });
+        System.out.println("Hello! I'm " + getAgentName());
+        addBehaviour(new InitilizeProgrammerBehaviour());
     }
 
     @Override
-    protected void takeDown(){
-        System.out.println(getAID() + " is shouting down!");
+    protected void takeDown() {
+        printMessage("is shouting down!");
         super.takeDown();
     }
 
@@ -46,16 +42,16 @@ public class ProgrammerAgent extends Agent {
 
         @Override
         public void action() {
-            switch (stage){
+            switch (stage) {
                 case 0:
                     employers = dfAgentManager.searchForService(myAgent, "job-offering");
-                    if (employers!= null && employers.length > 0 ) {
+                    if (employers != null && employers.length > 0) {
                         stage++;
                     }
                     break;
                 case 1:
                     ACLMessage callForJob = new ACLMessage(ACLMessage.CFP);
-                    for (DFAgentDescription agentDescription : employers){
+                    for (DFAgentDescription agentDescription : employers) {
                         callForJob.addReceiver(agentDescription.getName());
                     }
                     callForJob.setContent(simpleSkills.getSpecialization());
@@ -72,25 +68,55 @@ public class ProgrammerAgent extends Agent {
                     ACLMessage reply = myAgent.receive(mt);
                     if (reply != null) {
                         if (reply.getPerformative() == ACLMessage.AGREE) {
-                            System.out.println("Agent " + getAID() + " gets a new job!");
-                        }
-                        else if (reply.getPerformative() == ACLMessage.CANCEL) {
-                            System.out.println("Agent " + getAID() + " is to weak to get a good job!");
+                            System.out.println("Agent " + getAgentName() + " gets a new job!");
+                        } else if (reply.getPerformative() == ACLMessage.CANCEL) {
+                            System.out.println("Agent " + getAgentName() + " is to weak to get a good job!");
                         }
 
                         stage++;
-                        takeDown();
-                    }
-                    else {
+                    } else {
                         block();
                     }
+                    break;
+                case 3:
+                    stage++;
+                    takeDown();
                     break;
             }
         }
 
         @Override
         public boolean done() {
-            return stage == 3;
+            return stage == 4;
+        }
+    }
+
+    private class InitilizeProgrammerBehaviour extends OneShotBehaviour {
+        @Override
+        public void action() {
+            loadPersonalData(getLocalName());
+            loadSkills(getLocalName());
+
+            runAfterInitializeBehaviour();
+        }
+
+        private void loadSkills(String localName) {
+            Properties prop = PropertiesFileLoader.loadSPropertyFile(localName, "skills");
+            simpleSkills = new ProgrammerSkill(prop);
+        }
+
+        private void loadPersonalData(String localName) {
+            Properties prop = PropertiesFileLoader.loadSPropertyFile(localName, "personData");
+            personData = new PersonData(prop);
+        }
+
+        private void runAfterInitializeBehaviour() {
+            addBehaviour(new WakerBehaviour(getAgent(), 1000) {
+                @Override
+                protected void onWake() {
+                    addBehaviour(new FindJobBehaviour());
+                }
+            });
         }
     }
 }

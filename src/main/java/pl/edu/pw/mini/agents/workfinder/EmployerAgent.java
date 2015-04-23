@@ -1,7 +1,5 @@
 package pl.edu.pw.mini.agents.workfinder;
 
-
-import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
@@ -9,7 +7,7 @@ import pl.edu.pw.mini.agents.workfinder.cvdata.ProgrammerSkill;
 
 import java.util.Random;
 
-public class EmployerAgent extends Agent {
+public class EmployerAgent extends ExtendedAgent {
 
     private ProgrammerSkill simpleSkills;
     private DFAgentManager dfAgentManager = new DFAgentManager();
@@ -19,24 +17,23 @@ public class EmployerAgent extends Agent {
         System.out.println("Hello! I'm " + getAID().getName());
 
         simpleSkills = new ProgrammerSkill();
-        simpleSkills.setSpecialization("Java");
+        simpleSkills.setSpecialization("JAVA");
         Random rand = new Random();
         simpleSkills.setExperienceYears(rand.nextInt(2));
 
         boolean result = dfAgentManager.register(this, "job-offering", "best-employer");
         if (result) {
-            System.out.println("Successful register offers!");
+            printMessage("successful register offers!");
             addBehaviour(new OfferJobBehaviour());
-        }else {
-            System.out.println("Registering job offers unsuccessful!");
+        } else {
+            printMessage("registering job offers unsuccessful!");
             takeDown();
         }
     }
 
     @Override
     protected void takeDown() {
-        System.out.println(getAID() + " is shouting down!");
-
+        printMessage("is shouting down!");
         dfAgentManager.deregister(this);
 
         super.takeDown();
@@ -53,20 +50,21 @@ public class EmployerAgent extends Agent {
                 case 0:
                     ACLMessage msg = myAgent.receive();
                     if (msg != null) {
-                        System.out.println(getAID() + ": Receive message: " + msg.getContent());
+                        printMessage("receive message: " + msg.getContent());
                         if (msg.getPerformative() == ACLMessage.CFP) {
-                            System.out.println("Agent " + getAID() + " receive a poor CV!");
-
                             String programmerSpec = msg.getContent();
+                            ACLMessage reply = msg.createReply();
                             if (programmerSpec.equals(simpleSkills.getSpecialization())) {
-                                System.out.println("Found programmer with " + simpleSkills.getSpecialization() + " skills!");
-
-                                ACLMessage reply = msg.createReply();
+                                printMessage("found programmer with " + simpleSkills.getSpecialization() + " skills!");
                                 reply.setPerformative(ACLMessage.AGREE);
-                                myAgent.send(reply);
                             }
-                            stage = 1;
-                            takeDown();
+                            else {
+                                printMessage("receive a poor CV!");
+                                reply.setPerformative(ACLMessage.REFUSE);
+                            }
+                            myAgent.send(reply);
+//                            stage = 1;
+//                            takeDown();
                         } else {
                             block();
                         }
@@ -80,5 +78,4 @@ public class EmployerAgent extends Agent {
             return stage == 1;
         }
     }
-
 }

@@ -1,6 +1,8 @@
 package pl.edu.pw.mini.agents.workfinder.cvdata;
 
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Properties;
 
 /**
  * Created by pawel.bielicki on 2015-04-15.
@@ -8,9 +10,19 @@ import java.util.Date;
 public class PersonData {
     private String name;    //John Smith
     private String email;   //john.smith@gmail.com
-    private Date birthday;  //205-04-16
-    private int phone;      //555-223-445
+    private String birthday;  //2015-04-16
+    private String phoneNumber;      //555-223-445
     private String placeOfLiving;   //Warsaw, ul. Jana Pawła 23
+
+    //TODO
+    //Mozna to zrobic generycznie refleksja?
+    public PersonData(Properties prop) {
+        name = prop.getProperty("name");
+        email = prop.getProperty("email");
+        birthday = prop.getProperty("birthday");
+        phoneNumber = prop.getProperty("phoneNumber");
+        placeOfLiving = prop.getProperty("placeOfLiving");
+    }
 
     public String getName() {
         return name;
@@ -36,19 +48,19 @@ public class PersonData {
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public int getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

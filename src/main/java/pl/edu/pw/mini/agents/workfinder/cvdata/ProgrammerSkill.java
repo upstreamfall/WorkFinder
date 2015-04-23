@@ -2,6 +2,7 @@ package pl.edu.pw.mini.agents.workfinder.cvdata;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by pawel.bielicki on 2015-04-13.
@@ -16,6 +17,11 @@ public class ProgrammerSkill {
     public ProgrammerSkill() {
         frameworks = new HashMap<>();
         languages = new HashMap<>();
+    }
+
+    public ProgrammerSkill(Properties prop) {
+        specialization = prop.getProperty("specialization");
+        experienceYears = Integer.parseInt(prop.getProperty("experienceYears"));
     }
 
     public void setSpecialization(String specialization) {
