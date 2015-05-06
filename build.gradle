@@ -18,19 +18,20 @@ dependencies {
     compile 'com.tilab.jade:jade-test-suite:1.12.0'
 }
 
-task execute(type:JavaExec) {
+task execute(type: JavaExec) {
     main = 'jade.Boot'
     classpath = sourceSets.main.runtimeClasspath
     args '-agents', 'programmer_1:pl.edu.pw.mini.agents.workfinder.programmer.ProgrammerAgent;' +
                     'employer1:pl.edu.pw.mini.agents.workfinder.employer.EmployerAgent;' +
-                    'programmer_2:pl.edu.pw.mini.agents.workfinder.programmer.ProgrammerAgent;'
+                    'programmer_2:pl.edu.pw.mini.agents.workfinder.programmer.ProgrammerAgent;' +
+                    'Receiver:pl.edu.pw.mini.agents.workfinder.Receiver;'
 }
 configure(execute) {
     group = 'run'
     description = 'Run with different configurations'
 }
 
-task runGuiTests(type:JavaExec) {
+task runGuiTests(type: JavaExec) {
     main = 'test.common.testSuite.TestSuiteAgent'
     classpath = sourceSets.main.runtimeClasspath
     args 'testerList.xml'

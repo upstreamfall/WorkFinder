@@ -18,6 +18,8 @@ public class Test {
 
         ContainerController agentContainer = runtime.createAgentContainer(profile);
 
+
+
         Object reference = new Object();
         Object args[] = new Object[1];
         args[0] = reference;
