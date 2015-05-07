@@ -7,7 +7,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMockE2E'
+    'ngMockE2E',
+    'LocalStorageModule'
   ])
   .config(function ($routeProvider) {
     $routeProvider

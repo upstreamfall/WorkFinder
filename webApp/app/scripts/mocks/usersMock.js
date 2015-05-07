@@ -4,6 +4,7 @@ angular.module('WorkFinderApp')
   .run(function ($httpBackend) {
     $httpBackend.whenPOST('/login').respond(function (method, url, data, headers) {
         return [200, {
+          login: angular.fromJson(data).login,
           name: 'John Smith',
           email: 'john.smith@gmail.com',
           birthday: '2015-04-16',
