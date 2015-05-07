@@ -24,12 +24,14 @@ angular
         redirectTo: '/'
       });
   })
-  .run( function($rootScope, $location, loginService) {
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if ( !loginService.isAuthenticated() ) {
-        if ( next.templateUrl == "views/login.html" ) {
+  .run(function ($rootScope, $location, loginService) {
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+
+      $rootScope.hideHeader = !!($location.path() === '/login');
+      if (!loginService.isAuthenticated()) {
+        if (next.templateUrl == "views/login.html") {
         } else {
-          $location.path( "/login" );
+          $location.path("/login");
         }
       }
     });

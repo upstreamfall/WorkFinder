@@ -81,3 +81,8 @@ body {
     border-bottom: 0;
   }
 }
+
+
+.login-form {
+  margin: 100px 0;
+}

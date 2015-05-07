@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('WorkFinderApp')
-  .service('loginService', function (apiRoot, $http, localStorageService) {
+  .service('loginService', function (apiRoot, $http, $location, localStorageService) {
     this.login = function (agentName) {
       return $http.post(apiRoot + '/login', {
         login: agentName
       }).then(function (response) {
         // TODO: save some token?
         localStorageService.set('login', response.data.login);
+        $location.path('/');
       });
     };
 
@@ -16,6 +17,7 @@ angular.module('WorkFinderApp')
     };
 
     this.logout = function () {
-      return localStorageService.remove('login');
+      localStorageService.remove('login');
+      $location.path('/login');
     };
   });
