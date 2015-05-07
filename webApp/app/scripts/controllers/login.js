@@ -5,6 +5,6 @@ angular.module('WorkFinderApp')
     $scope.login = function (name) {
       if (name) {
         loginService.login(name);
-      };
+      }
     };
   });

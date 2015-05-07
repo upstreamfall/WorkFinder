@@ -2,7 +2,7 @@
 
 angular.module('WorkFinderApp')
   .run(function ($httpBackend) {
-    $httpBackend.whenPOST('/login').respond(function (method, url, data, headers) {
+    $httpBackend.whenPOST('/login').respond(function (method, url, data) {
         return [200, {
           login: angular.fromJson(data).login,
           name: 'John Smith',
