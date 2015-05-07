@@ -16,11 +16,21 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run( function($rootScope, $location, loginService) {
+    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+      if ( !loginService.isAuthenticated() ) {
+        if ( next.templateUrl == "views/login.html" ) {
+        } else {
+          $location.path( "/login" );
+        }
+      }
+    });
   });
