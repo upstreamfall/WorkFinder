@@ -1,9 +1,21 @@
 'use strict';
 
 angular.module('WorkFinderApp')
-  .controller('MydataCtrl', function ($scope, userDataService, toastr) {
+  .controller('MydataCtrl', function ($scope, userDataService, skillsDataService, toastr) {
     userDataService.getUserData().success(function (userData) {
       $scope.userData = userData;
+    });
+
+    skillsDataService.getLevels().success(function (levels) {
+      $scope.levels = levels;
+    });
+
+    skillsDataService.getSkills().success(function (skills) {
+      $scope.skills = skills;
+    });
+
+    skillsDataService.getSkillsData().success(function (skillSet) {
+      $scope.skillSet = skillSet;
     });
 
     $scope.submitUserData = function (userData) {
@@ -14,24 +26,11 @@ angular.module('WorkFinderApp')
       });
     };
 
-    $scope.levels = [
-      {id: 1, name: 'Low'},
-      {id: 2, name: 'Intermediate'},
-      {id: 3, name: 'High'},
-      {id: 4, name: 'Guru'}
-    ];
-
-    $scope.skills = [
-      {id: 1, name: 'Java'},
-      {id: 2, name: 'JS'},
-      {id: 3, name: 'MeteorJS'}
-    ];
-
-    $scope.skillSet = [
-      {skillId: 1, levelId: 2}
-    ];
-
-    $scope.print = function() {
-      console.log('dasd', $scope.skillSet);
+    $scope.submitSkillsData = function (skillsData) {
+      skillsDataService.updateSkillsData(skillsData).success(function () {
+        toastr.success('Your data has been saved!', 'Success!');
+      }).error(function () {
+        toastr.success('There was a problem while saving data', 'Error!');
+      });
     };
   });
