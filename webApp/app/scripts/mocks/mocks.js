@@ -13,7 +13,7 @@ angular.module('WorkFinderApp')
         }, {}];
     });
 
-    $httpBackend.whenGET('/userData').respond(function (method, url, data) {
+    $httpBackend.whenGET('/userData').respond(function () {
       return [200, {
         name: 'John Smith',
         email: 'john.smith@gmail.com'
