@@ -86,3 +86,15 @@ body {
 .login-form {
   margin: 100px 0;
 }
+
+.personal-data-form {
+  margin-bottom: 50px;
+}
+
+.professional-data-form {
+  margin-bottom: 100px;
+}
+
+.skills-row {
+  margin-bottom: 10px;
+}

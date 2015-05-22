@@ -13,4 +13,25 @@ angular.module('WorkFinderApp')
         toastr.success('There was a problem while saving data', 'Error!');
       });
     };
+
+    $scope.levels = [
+      {id: 1, name: 'Low'},
+      {id: 2, name: 'Intermediate'},
+      {id: 3, name: 'High'},
+      {id: 4, name: 'Guru'}
+    ];
+
+    $scope.skills = [
+      {id: 1, name: 'Java'},
+      {id: 2, name: 'JS'},
+      {id: 3, name: 'MeteorJS'}
+    ];
+
+    $scope.skillSet = [
+      {skillId: 1, levelId: 2}
+    ];
+
+    $scope.print = function() {
+      console.log('dasd', $scope.skillSet);
+    };
   });
