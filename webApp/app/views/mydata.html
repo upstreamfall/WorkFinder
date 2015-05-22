@@ -1,0 +1,20 @@
+<div class="container">
+  <form class="personal-data-form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" ng-model="userData.email">
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="name" ng-model="userData.name">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="submitUserData(userData)">Submit</button>
+  </form>
+
+  <form class="professional-data-form">
+    <div ng-repeat="skillItem in skillSet">
+      <skill-select skills="$parent.skills" levels="$parent.levels" skill-level="skillItem"></skill-select>
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="submitSkillsData(skillSet)">Submit</button>
+  </form>
+</div>
