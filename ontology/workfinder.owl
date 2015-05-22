@@ -424,6 +424,16 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD3 -->
+
+    <owl:NamedIndividual rdf:about="&wf;AuxMD3">
+        <rdf:type rdf:resource="&wf;AuxSkill"/>
+        <hasLevel rdf:datatype="&xsd;integer">1</hasLevel>
+        <hasSkill rdf:resource="&wf;SQLite"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#CouchDB -->
 
     <owl:NamedIndividual rdf:about="&wf;CouchDB">
@@ -462,7 +472,6 @@
 
     <owl:NamedIndividual rdf:about="&wf;Kate">
         <rdf:type rdf:resource="&wf;Programmer"/>
-        <hasSkill rdf:resource="&wf;ang2"/>
     </owl:NamedIndividual>
     
 
@@ -487,6 +496,9 @@
 
     <owl:NamedIndividual rdf:about="&wf;MobileDeveloper">
         <rdf:type rdf:resource="&wf;Job"/>
+        <hasAuxSkill rdf:resource="&wf;AuxMD1"/>
+        <hasAuxSkill rdf:resource="&wf;AuxMD2"/>
+        <hasAuxSkill rdf:resource="&wf;AuxMD3"/>
     </owl:NamedIndividual>
     
 
@@ -551,22 +563,6 @@
 
     <owl:NamedIndividual rdf:about="&wf;WindowsPhone">
         <rdf:type rdf:resource="&wf;MobileTechnology"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#ang1 -->
-
-    <owl:NamedIndividual rdf:about="&wf;ang1">
-        <skillValue rdf:datatype="&xsd;int">5</skillValue>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#ang2 -->
-
-    <owl:NamedIndividual rdf:about="&wf;ang2">
-        <skillValue rdf:datatype="&xsd;int">2</skillValue>
     </owl:NamedIndividual>
 </rdf:RDF>
 
