@@ -8,7 +8,8 @@ angular.module('WorkFinderApp')
 
     $scope.headerLinks = [
       {name: 'Home', link: '/'},
-      {name: 'Offers', link: '#/offers'}
+      {name: 'Offers', link: '#/offers'},
+      {name: 'MyData', link: '#/myData'}
     ];
 
     $scope.activeIndex = 0;
@@ -18,6 +19,6 @@ angular.module('WorkFinderApp')
     };
 
     $scope.setActive = function (index) {
-      return $scope.activeIndex = index;
-    }
+      return $scope.activeIndex === index;
+    };
   });

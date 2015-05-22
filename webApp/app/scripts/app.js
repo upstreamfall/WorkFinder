@@ -24,6 +24,10 @@ angular
         templateUrl: 'views/offers.html',
         controller: 'OffersCtrl'
       })
+      .when('/myData', {
+        templateUrl: 'views/mydata.html',
+        controller: 'MydataCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
