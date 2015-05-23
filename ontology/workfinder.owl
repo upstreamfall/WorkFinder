@@ -151,6 +151,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#hasPriority -->
+
+    <owl:DatatypeProperty rdf:about="&wf;hasPriority">
+        <rdfs:domain rdf:resource="&wf;AuxSkill"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#hasStartDate -->
 
     <owl:DatatypeProperty rdf:about="&wf;hasStartDate">
@@ -408,6 +417,7 @@
 
     <owl:NamedIndividual rdf:about="&wf;AuxMD1">
         <rdf:type rdf:resource="&wf;AuxSkill"/>
+        <hasPriority rdf:datatype="&xsd;integer">3</hasPriority>
         <hasLevel rdf:datatype="&xsd;integer">6</hasLevel>
         <hasSkill rdf:resource="&wf;Android"/>
     </owl:NamedIndividual>
