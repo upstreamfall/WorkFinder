@@ -44,8 +44,9 @@ public class AgentService {
         return agent;
     }
 
-    public void sendMessage(String receiverName) {
+    public void sendMessage(String receiverName, String content) {
         ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+        message.setContent(content);
         AID aid = new AID(receiverName, false);
         message.addReceiver(aid);
 
