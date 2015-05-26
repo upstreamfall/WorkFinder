@@ -42,9 +42,4 @@ public class AgentController {
         }
         resonses.get(agentName).add(content);
     }
-
-    @RequestMapping(value="agent", method=RequestMethod.GET)
-    public String recieveMessage() {
-        return agentService.recieveMessage().toString();
-    }
 }
