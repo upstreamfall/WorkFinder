@@ -37,6 +37,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam2">
     <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP1">
     <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
@@ -46,6 +47,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam22">
     <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasSkill">
     <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
@@ -112,6 +114,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam23">
     <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <wf:hasEmail>sam@sam</wf:hasEmail>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasLevel">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
@@ -120,6 +123,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam1">
     <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#FrontEnd">
     <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#WebTechnology"/>
@@ -255,6 +259,7 @@
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam">
     <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Android">
     <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
