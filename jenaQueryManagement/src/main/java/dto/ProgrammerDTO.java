@@ -1,11 +1,14 @@
 package dto;
 
+import java.util.List;
+
 /**
  * Created by Pawel on 2015-06-08.
  */
 public class ProgrammerDTO {
     private String name;
     private String email;
+    private List<Skill> skillList;
 
     public ProgrammerDTO(String name, String email){
         this.name = name;
@@ -30,6 +33,14 @@ public class ProgrammerDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Skill> getSkillList() {
+        return skillList;
+    }
+
+    public void setSkillList(List<Skill> skillList) {
+        this.skillList = skillList;
     }
 
     @Override

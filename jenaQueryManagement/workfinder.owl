@@ -7,171 +7,172 @@
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns:sfn="http://www.w3.org/ns/sparql#" > 
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Testing">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Database">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxAdam2">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</wf:hasLevel>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Job">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileDeveloper">
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD3"/>
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD2"/>
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD1"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Job"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Job"/>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD1"/>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD2"/>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD3"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam2">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP1">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</wf:hasLevel>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam22">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasSkill">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD1">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Android"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</wf:hasLevel>
-    <wf:hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</wf:hasPriority>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasPriority rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</wf:hasPriority>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Android"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Oracle">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Mike">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasStartDate">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Project"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Project"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Voldemort">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#NetworkAdministration">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#CouchDB">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#MySQL">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Kate">
-    <wf:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kate@gmail.com</wf:hasEmail>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <wf:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kate@gmail.com</wf:hasEmail>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#BackEnd">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#WebTechnology"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#WebTechnology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasTask">
-    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Project"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Project"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#DatabaseJuniorProgrammer1">
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP2"/>
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP1"/>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Job"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Job"/>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP1"/>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP2"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam23">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <wf:hasAuxSkill rdf:nodeID="A0"/>
     <wf:hasEmail>sam@sam</wf:hasEmail>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasLevel">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam1">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#FrontEnd">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#WebTechnology"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#WebTechnology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#PostgreSQL">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Task">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD2">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MySQL"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</wf:hasLevel>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MySQL"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasDescription">
-    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
-    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasPriority">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#OnlineSchool">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#MongoDBCertificate">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#JavaScriptAdvancedCertificate">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Project">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -180,42 +181,45 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#WindowsPhone">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="A0">
+    <wf:hasLevel>5</wf:hasLevel>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#MongoDB">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Design">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Database"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Database"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasEmail">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxMD3">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</wf:hasLevel>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#SQLite"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasCertificate">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Certificate"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -224,79 +228,79 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#isAssignedTo">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxAdam1">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Android"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</wf:hasLevel>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Android"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Tutorial">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxDBJP2">
-    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Oracle"/>
-    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</wf:hasLevel>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <wf:hasLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</wf:hasLevel>
+    <wf:hasSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Oracle"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#skillValue">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Skill"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Database"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Database"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Sam">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Android">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#MicrosoftSQLServer">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#RelationalDatabase"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#IOS">
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#MobileTechnology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#Adam">
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxAdam2"/>
-    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxAdam1"/>
-    <wf:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gmail</wf:hasEmail>
-    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    <rdf:type rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Programmer"/>
+    <wf:hasEmail rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gmail</wf:hasEmail>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxAdam1"/>
+    <wf:hasAuxSkill rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxAdam2"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasAuxSkill">
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
-    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#AuxSkill"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Person"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#WebTechnology">
-    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Developing"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://www.semanticweb.org/pawel/ontologies/workfinder#hasEndDate">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Project"/>
-    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Course"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Project"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/pawel/ontologies/workfinder#Task"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </rdf:Description>
 </rdf:RDF>

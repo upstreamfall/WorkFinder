@@ -1,6 +1,7 @@
 package OntologyConnector;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.hp.hpl.jena.ontology.Individual;
@@ -10,6 +11,7 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.*;
 import dto.ProgrammerDTO;
+import dto.Skill;
 
 public class WorkFinderQueryExecutor {
 	private SPARQLConnector sparql = SPARQLConnector.getInstance();
@@ -155,8 +157,8 @@ public class WorkFinderQueryExecutor {
         String queryString =
                 "SELECT *"
                         + " WHERE {"
-                        + "	?p rdf:type wf:Programmer ."
-                        + " FILTER ( ?p = wf:" + name + ") ."
+                        + "	?programmer rdf:type wf:Programmer ."
+                        + " FILTER ( ?programmer = wf:" + name + ") ."
                         + "	}";
 
         ResultSet results = sparql.excuteSparql(queryString);
@@ -184,4 +186,42 @@ public class WorkFinderQueryExecutor {
         return true;
     }
 
+    public void addSkill(String name, Skill skill){
+        OntModel ontModel = sparql.connect();
+        String ontBase = sparql.getOntologyBase();
+
+        Individual programmer = ontModel.getIndividual(ontBase + name);
+
+        OntClass auxSkillClass = ontModel.getOntClass(ontBase + "Auxskill");
+        Individual auxSkill = ontModel.createIndividual(auxSkillClass);
+        auxSkill.addProperty(ontModel.createProperty(ontBase + "hasLevel"), String.valueOf(skill.getLevel()));
+
+        programmer.addProperty(ontModel.createProperty(ontBase + "hasAuxSkill"), auxSkill);
+        sparql.saveModel(ontModel);
+    };
+
+    public List<Skill> getProgrammerSkills(String name){
+        List<Skill> skillList = new LinkedList<>();
+
+        String queryString =
+                "SELECT *"
+                        + " WHERE {"
+                        + " ?programmer rdf:type wf:Programmer ."
+                        + " ?programmer wf:hasAuxSkill ?auxSkill ."
+                        + " ?auxSkill wf:hasSkill ?skill ."
+                        + " ?auxSkill wf:hasLevel ?level ."
+                        + " FILTER ( ?programmer = wf:" + name + " ) ."
+                        + "	}";
+
+        ResultSet results = sparql.excuteSparql(queryString);
+        while(results.hasNext()){
+            QuerySolution querySolution = results.nextSolution();
+
+            skillList.add(new Skill(
+                    querySolution.getLiteral("skill").getString(),
+                    querySolution.getLiteral("level").getInt(),
+                    0));
+        }
+        return  skillList;
+    };
 }
