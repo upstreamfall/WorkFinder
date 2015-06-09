@@ -5,8 +5,10 @@ import java.io.InputStream;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.query.*;
+import com.hp.hpl.jena.query.ResultSetRewindable;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.sparql.resultset.*;
 import com.hp.hpl.jena.util.FileManager;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -72,11 +74,12 @@ public class SPARQLConnector {
 		String queryWithHeaders = queryHeaders + queryString;
 		Query query = QueryFactory.create(queryWithHeaders);
 		QueryExecution queryExcution = QueryExecutionFactory.create(query, connect());
-		ResultSet resultSet = queryExcution.execSelect();
 
-        ResultSet resultSetTmp = ResultSetFactory.copyResults(resultSet);
+        ResultSet resultSet = queryExcution.execSelect();
+        ResultSetRewindable resultSetTmp = ResultSetFactory.copyResults(resultSet);
         ResultSetFormatter.out(System.out, resultSetTmp);
+        resultSetTmp.reset();
 
-		return resultSet;
+		return resultSetTmp;
 	}
 }

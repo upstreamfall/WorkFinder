@@ -3,18 +3,18 @@ package dto;
 /**
  * Created by pbielicki on 2015-06-08.
  */
-public class Skill {
+public class SkillDTO {
     private String name;
     private int level;
     private int priority;
 
-    public Skill(String name, int level, int priority) {
+    public SkillDTO(String name, int level, int priority) {
         this.name = name;
         this.level = level;
         this.priority = priority;
     }
 
-    public Skill(){
+    public SkillDTO(){
 
     }
 

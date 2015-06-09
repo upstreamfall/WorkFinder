@@ -8,7 +8,7 @@ import java.util.List;
 public class ProgrammerDTO {
     private String name;
     private String email;
-    private List<Skill> skillList;
+    private List<SkillDTO> skillList;
 
     public ProgrammerDTO(String name, String email){
         this.name = name;
@@ -35,11 +35,11 @@ public class ProgrammerDTO {
         this.email = email;
     }
 
-    public List<Skill> getSkillList() {
+    public List<SkillDTO> getSkillList() {
         return skillList;
     }
 
-    public void setSkillList(List<Skill> skillList) {
+    public void setSkillList(List<SkillDTO> skillList) {
         this.skillList = skillList;
     }
 

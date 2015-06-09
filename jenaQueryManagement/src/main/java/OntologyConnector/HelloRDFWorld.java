@@ -1,9 +1,6 @@
 package OntologyConnector;
 
-import dto.ProgrammerDTO;
-import dto.Skill;
-
-public class HelloRDFWorld {	
+public class HelloRDFWorld {
 	public static void main(String[] args) {
 		WorkFinderQueryExecutor wf = new WorkFinderQueryExecutor("workfinder.owl");
 		

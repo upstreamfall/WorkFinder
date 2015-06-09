@@ -1,8 +1,6 @@
 package OntologyConnector;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -11,7 +9,7 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.*;
 import dto.ProgrammerDTO;
-import dto.Skill;
+import dto.SkillDTO;
 
 public class WorkFinderQueryExecutor {
 	private SPARQLConnector sparql = SPARQLConnector.getInstance();
@@ -20,41 +18,38 @@ public class WorkFinderQueryExecutor {
 		sparql.setOntologyFilePath(ontologyFilePath);
 	}
 	
-//	public List<Triplet<String, String, Integer>> compareProgrammerWithJob(String programmerId, String jobId){
-//		String queryString =
-//			"SELECT  ?p ?s ((-1)*(?jlev - ?lev) AS ?diff)"
-//			+ "	WHERE { "
-//			+ "	?p rdf:type wf:Programmer ."
-//			+ "	?p wf:hasAuxSkill ?as ."
-//			+ "	?as wf:hasSkill ?s ."
-//			+ "	?as wf:hasLevel ?lev ."
-//
-//			+ "	?job rdf:type wf:Job ."
-//			+ "	?job wf:hasAuxSkill ?jas ."
-//			+ "	?jas wf:hasSkill ?js ."
-//			+ "	?jas wf:hasLevel ?jlev ."
-//
-//			+ "	FILTER ( ?s = ?js) ."
-//			+ "	FILTER ( ?jlev - ?lev <= 2 ) ."
-//
-//			+ " FILTER (?p = wf:" + programmerId + ") ."
-//			+ " FILTER (?job = wf:" + jobId + ") ."
-//			+ "	}";
-//
-//		ResultSet results = sparql.excuteSparql(queryString);
-//
-//		List<Triplet<String, String, Integer>> compareList = new ArrayList();
-//		while(results.hasNext()){
-//			QuerySolution querySolution = results.nextSolution();
-//
-//			compareList.add(new Triplet<String, String, Integer>(
-//					querySolution.getLiteral("p").getString(),
-//					querySolution.getLiteral("s").getString(),
-//					Integer.parseInt(querySolution.getLiteral("diff").getString())));
-//		}
-//
-//		return compareList;
-//	}
+	public Map<String, Integer> compareProgrammerWithJob(String programmerId, String jobId){
+		String queryString =
+			"SELECT  ?p ?s ((-1)*(?jlev - ?lev) AS ?diff)"
+			+ "	WHERE { "
+			+ "	?programmer rdf:type wf:Programmer ."
+			+ "	?programmer wf:hasAuxSkill ?auxSkill ."
+			+ "	?auxSkill wf:hasSkill ?skill ."
+			+ "	?auxSkill wf:hasLevel ?level ."
+
+			+ "	?job rdf:type wf:Job ."
+			+ "	?job wf:hasAuxSkill ?jobAuxSkill ."
+			+ "	?jobAuxSkill wf:hasSkill ?jobSkill ."
+			+ "	?jobAuxSkill wf:hasLevel ?jobLevel ."
+
+			+ "	FILTER ( ?skill = ?jobSkill) ."
+			+ "	FILTER ( ?jobLevel - ?level <= 2 ) ."
+
+			+ " FILTER (?programmer = wf:" + programmerId + ") ."
+			+ " FILTER (?job = wf:" + jobId + ") ."
+			+ "	}";
+
+		ResultSet results = sparql.excuteSparql(queryString);
+
+		Map<String, Integer> compareList = new HashMap<>();
+		while(results.hasNext()){
+			QuerySolution querySolution = results.nextSolution();
+            compareList.put(querySolution.getLiteral("p").getString(),
+                            querySolution.getLiteral("diff").getInt());
+		}
+
+		return compareList;
+	}
 	
 	public List<String> getSkillRoots(){
 		return getSubSkills("Skill");
@@ -186,7 +181,7 @@ public class WorkFinderQueryExecutor {
         return true;
     }
 
-    public void addSkill(String name, Skill skill){
+    public void addSkill(String name, SkillDTO skill){
         OntModel ontModel = sparql.connect();
         String ontBase = sparql.getOntologyBase();
 
@@ -200,11 +195,11 @@ public class WorkFinderQueryExecutor {
         sparql.saveModel(ontModel);
     };
 
-    public List<Skill> getProgrammerSkills(String name){
-        List<Skill> skillList = new LinkedList<>();
+    public List<SkillDTO> getProgrammerSkills(String name){
+        List<SkillDTO> skillList = new LinkedList<>();
 
         String queryString =
-                "SELECT *"
+                "SELECT ?skill ?level"
                         + " WHERE {"
                         + " ?programmer rdf:type wf:Programmer ."
                         + " ?programmer wf:hasAuxSkill ?auxSkill ."
@@ -216,12 +211,12 @@ public class WorkFinderQueryExecutor {
         ResultSet results = sparql.excuteSparql(queryString);
         while(results.hasNext()){
             QuerySolution querySolution = results.nextSolution();
-
-            skillList.add(new Skill(
-                    querySolution.getLiteral("skill").getString(),
+            skillList.add(new SkillDTO(
+                    querySolution.getResource("skill").getLocalName(),
                     querySolution.getLiteral("level").getInt(),
                     0));
         }
+
         return  skillList;
     };
 }
