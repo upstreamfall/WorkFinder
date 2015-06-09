@@ -24,24 +24,43 @@ public class WorkFinderQueryExecutor {
 
     public Map<String, Integer> compareProgrammerWithJob(String programmerId, String jobId) {
         String queryString =
-                "SELECT  ?programmer ?skill ((-1)*(?jobLevel - ?level) AS ?diff)"
-                        + "	WHERE { "
-                        + "	?programmer rdf:type wf:Programmer ."
-                        + "	?programmer wf:hasAuxSkill ?auxSkill ."
-                        + "	?auxSkill wf:hasSkill ?skill ."
-                        + "	?auxSkill wf:hasLevel ?level ."
-
-                        + "	?job rdf:type wf:Job ."
-                        + "	?job wf:hasAuxSkill ?jobAuxSkill ."
-                        + "	?jobAuxSkill wf:hasSkill ?jobSkill ."
-                        + "	?jobAuxSkill wf:hasLevel ?jobLevel ."
-
-                        + "	FILTER ( ?skill = ?jobSkill) ."
-                        + "	FILTER ( ?jobLevel - ?level <= 2 ) ."
-
-                        + " FILTER (?programmer = wf:" + programmerId + ") ."
-                        + " FILTER (?job = wf:" + jobId + ") ."
-                        + "	}";
+                "SELECT * WHERE {\n" +
+                        "\t{\tSELECT  ?programmer ?skill (?jobPriority*(?levelevel - ?jobLevel) AS ?difference)\n" +
+                        "\t\tWHERE { ?programmer rdf:type wf:Programmer .\n" +
+                        "\t\t?programmer wf:hasAuxSkill ?auxSkill .\n" +
+                        "\t\t?auxSkill wf:hasSkill ?skill .\n" +
+                        "\t\t?auxSkill wf:hasLevel ?levelevel .\n" +
+                        "\t\t?job rdf:type wf:Job .\n" +
+                        "\t\t?job wf:hasAuxSkill ?jobAuxSkill .\n" +
+                        "\t\t?jobAuxSkill wf:hasSkill ?jobSkill .\n" +
+                        "\t\t?jobAuxSkill wf:hasLevel ?jobLevel .\n" +
+                        "\t\t?jobAuxSkill wf:hasPriority ?jobPriority .\n" +
+                        "\t\tFILTER ( ?skill = ?jobSkill) .\n" +
+                        "\t\tFILTER (?programmer = wf:Adam) .\n" +
+                        "\t\tFILTER (?job = wf:MobileDeveloper) .}\n" +
+                        "\t}\n" +
+                        "\tUNION \n" +
+                        "\t{\tSELECT ?skill ((-1)*?jobPriority*?level AS ?difference) WHERE {\n" +
+                        "\t\t{\tSELECT  ?skill ?level ?jobPriority\n" +
+                        "\t\t\tWHERE { \n" +
+                        "\t\t\t?job rdf:type wf:Job .\n" +
+                        "\t\t\t?job wf:hasAuxSkill ?jobAuxSkill .\n" +
+                        "\t\t\t?jobAuxSkill wf:hasSkill ?skill .\n" +
+                        "\t\t\t?jobAuxSkill wf:hasLevel ?level .\n" +
+                        "\t\t\t?jobAuxSkill wf:hasPriority ?jobPriority .\n" +
+                        "\t\t\tFILTER (?job = wf:MobileDeveloper) .}\n" +
+                        "\t\t}\n" +
+                        "\t\tMINUS {\n" +
+                        "\t\t\tSELECT ?skill\n" +
+                        "\t\t\tWHERE { \n" +
+                        "\t\t\t?programmer rdf:type wf:Programmer .\n" +
+                        "\t\t\t?programmer wf:hasAuxSkill ?auxSkill .\n" +
+                        "\t\t\t?auxSkill wf:hasSkill ?skill .\n" +
+                        "\t\t\tFILTER (?programmer = wf:Adam) . }\n" +
+                        "\t\t\t}\n" +
+                        "\t\t}\n" +
+                        "\t}\n" +
+                        "}\n";
 
         ResultSet results = sparql.excuteSparql(queryString);
 
@@ -49,7 +68,7 @@ public class WorkFinderQueryExecutor {
         while (results.hasNext()) {
             QuerySolution querySolution = results.nextSolution();
             compareList.put(querySolution.getResource("skill").getLocalName(),
-                    querySolution.getLiteral("diff").getInt());
+                    querySolution.getLiteral("difference").getInt());
         }
 
         return compareList;
