@@ -20,8 +20,6 @@ public class SPARQLConnector {
     private SPARQLConnector() {
     }
 
-    ;
-
     private static class SingletonHolder {
         private final static SPARQLConnector instance = new SPARQLConnector();
     }

@@ -24,7 +24,7 @@ public class WorkFinderQueryExecutor {
 
     public Map<String, Integer> compareProgrammerWithJob(String programmerId, String jobId) {
         String queryString =
-                "SELECT  ?p ?s ((-1)*(?jlev - ?lev) AS ?diff)"
+                "SELECT  ?programmer ?skill ((-1)*(?jobLevel - ?level) AS ?diff)"
                         + "	WHERE { "
                         + "	?programmer rdf:type wf:Programmer ."
                         + "	?programmer wf:hasAuxSkill ?auxSkill ."
@@ -48,7 +48,7 @@ public class WorkFinderQueryExecutor {
         Map<String, Integer> compareList = new HashMap<>();
         while (results.hasNext()) {
             QuerySolution querySolution = results.nextSolution();
-            compareList.put(querySolution.getLiteral("p").getString(),
+            compareList.put(querySolution.getResource("skill").getLocalName(),
                     querySolution.getLiteral("diff").getInt());
         }
 
@@ -172,7 +172,7 @@ public class WorkFinderQueryExecutor {
         }
     }
 
-    private void addSkillToWorker(Individual worker, SkillDTO skill){
+    private void addSkillToWorker(Individual worker, SkillDTO skill) {
         OntModel ontModel = sparql.connect();
         OntClass auxSkillClass = ontModel.getOntClass(ontBase + "Auxskill");
         Individual auxSkill = ontModel.createIndividual(auxSkillClass);
