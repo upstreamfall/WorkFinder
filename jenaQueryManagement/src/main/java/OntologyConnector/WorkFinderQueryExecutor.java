@@ -8,102 +8,60 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.rdf.model.*;
+import dto.JobDTO;
 import dto.ProgrammerDTO;
 import dto.SkillDTO;
+import dto.WorkerDTO;
 
 public class WorkFinderQueryExecutor {
-	private SPARQLConnector sparql = SPARQLConnector.getInstance();
-	
-	public WorkFinderQueryExecutor(String ontologyFilePath){
-		sparql.setOntologyFilePath(ontologyFilePath);
-	}
-	
-	public Map<String, Integer> compareProgrammerWithJob(String programmerId, String jobId){
-		String queryString =
-			"SELECT  ?p ?s ((-1)*(?jlev - ?lev) AS ?diff)"
-			+ "	WHERE { "
-			+ "	?programmer rdf:type wf:Programmer ."
-			+ "	?programmer wf:hasAuxSkill ?auxSkill ."
-			+ "	?auxSkill wf:hasSkill ?skill ."
-			+ "	?auxSkill wf:hasLevel ?level ."
+    private SPARQLConnector sparql = SPARQLConnector.getInstance();
+    private String ontBase = sparql.getOntologyBase();
+    private UtilsQuery utils = new UtilsQuery();
 
-			+ "	?job rdf:type wf:Job ."
-			+ "	?job wf:hasAuxSkill ?jobAuxSkill ."
-			+ "	?jobAuxSkill wf:hasSkill ?jobSkill ."
-			+ "	?jobAuxSkill wf:hasLevel ?jobLevel ."
+    public WorkFinderQueryExecutor(String ontologyFilePath) {
+        sparql.setOntologyFilePath(ontologyFilePath);
+    }
 
-			+ "	FILTER ( ?skill = ?jobSkill) ."
-			+ "	FILTER ( ?jobLevel - ?level <= 2 ) ."
+    public Map<String, Integer> compareProgrammerWithJob(String programmerId, String jobId) {
+        String queryString =
+                "SELECT  ?p ?s ((-1)*(?jlev - ?lev) AS ?diff)"
+                        + "	WHERE { "
+                        + "	?programmer rdf:type wf:Programmer ."
+                        + "	?programmer wf:hasAuxSkill ?auxSkill ."
+                        + "	?auxSkill wf:hasSkill ?skill ."
+                        + "	?auxSkill wf:hasLevel ?level ."
 
-			+ " FILTER (?programmer = wf:" + programmerId + ") ."
-			+ " FILTER (?job = wf:" + jobId + ") ."
-			+ "	}";
+                        + "	?job rdf:type wf:Job ."
+                        + "	?job wf:hasAuxSkill ?jobAuxSkill ."
+                        + "	?jobAuxSkill wf:hasSkill ?jobSkill ."
+                        + "	?jobAuxSkill wf:hasLevel ?jobLevel ."
 
-		ResultSet results = sparql.excuteSparql(queryString);
+                        + "	FILTER ( ?skill = ?jobSkill) ."
+                        + "	FILTER ( ?jobLevel - ?level <= 2 ) ."
 
-		Map<String, Integer> compareList = new HashMap<>();
-		while(results.hasNext()){
-			QuerySolution querySolution = results.nextSolution();
-            compareList.put(querySolution.getLiteral("p").getString(),
-                            querySolution.getLiteral("diff").getInt());
-		}
-
-		return compareList;
-	}
-	
-	public List<String> getSkillRoots(){
-		return getSubSkills("Skill");
-	}
-	
-	public List<String> getSubSkills(String skillName){
-		String queryString =
-			"SELECT (?directSub AS ?technology) ?super"
-			+ " WHERE {" 
-			+ " ?directSub rdfs:subClassOf ?super ."
-			+ " FILTER NOT EXISTS {"
-			+ "				?otherSub rdfs:subClassOf ?super ."
-			+ "				?directSub rdfs:subClassOf ?otherSub . "
-			+ "				FILTER ( ?directSub != ?otherSub ) ."
-			+ " }"
-			+ " FILTER ( ?super = wf:" + skillName + " ) ."
-			+ "	}";
+                        + " FILTER (?programmer = wf:" + programmerId + ") ."
+                        + " FILTER (?job = wf:" + jobId + ") ."
+                        + "	}";
 
         ResultSet results = sparql.excuteSparql(queryString);
-		List<String> skillList = new ArrayList();
-		while(results.hasNext()){
-			QuerySolution querySolution = results.nextSolution();
-			
-			skillList.add(querySolution.getLiteral("technology").toString());
-		}
-		
-		return skillList;
-	}
 
-	public List<String> getSkillIndividuals(String skillName) {
-		String queryString =
-				"SELECT ?technology"
-				+ " WHERE {" 
-				+ " ?technology rdf:type wf:" + skillName
-				+ "	}";
-		 
-		ResultSet results = sparql.excuteSparql(queryString);
+        Map<String, Integer> compareList = new HashMap<>();
+        while (results.hasNext()) {
+            QuerySolution querySolution = results.nextSolution();
+            compareList.put(querySolution.getLiteral("p").getString(),
+                    querySolution.getLiteral("diff").getInt());
+        }
 
-		List<String> skillList = new ArrayList();
-		while(results.hasNext()){
-			QuerySolution querySolution = results.nextSolution();
-			
-			skillList.add(querySolution.getLiteral("technology").toString());
-		}
-		
-		return skillList;	
-	}
+        return compareList;
+    }
 
     /**
-     * Get primary information about programmer.
+     * Get primary information about programmer without skills.
+     *
      * @param programmerId
      * @return
      */
-	public ProgrammerDTO getProgrammerInfo(String programmerId) {
+    public ProgrammerDTO getProgrammerDataInfo(String programmerId) {
         String queryString =
                 "SELECT *"
                         + " WHERE {"
@@ -121,102 +79,127 @@ public class WorkFinderQueryExecutor {
             infoList.setName(querySolution.getResource("programmer").getLocalName());
             infoList.setEmail(querySolution.getLiteral("email").getString());
         }
-		
-		return infoList;	
-	}
 
-    /**
-     * Creates new programmer model.
-     * @param programmer
-     */
-	public boolean createNewProgrammer(ProgrammerDTO programmer) {
-        if(!checkIfProgrammerNameExists(programmer.getName()) )  return false;
-
-        createNewProgrammerModel(programmer);
-        return true;
-	}
-
-    private void createNewProgrammerModel(ProgrammerDTO programmerDto) {
-        OntModel ontModel = sparql.connect();
-        String ontBase = sparql.getOntologyBase();
-
-        OntClass programmerClass = ontModel.getOntClass(ontBase + "Programmer");
-        Individual programmer = ontModel.createIndividual(ontBase + programmerDto.getName(), programmerClass);
-        Property emailProperty = ontModel.createProperty(ontBase + "hasEmail");
-        programmer.addProperty(emailProperty, programmerDto.getEmail());
-
-        sparql.saveModel(ontModel);
+        return infoList;
     }
 
-    private boolean checkIfProgrammerNameExists(String name) {
+    /**
+     * Get worker list of skills.
+     *
+     * @param workerName
+     * @return
+     */
+    public List<SkillDTO> getWorkerSkillsInfo(String workerName) {
         String queryString =
-                "SELECT *"
+                "SELECT ?skill ?level ?priority "
                         + " WHERE {"
-                        + "	?programmer rdf:type wf:Programmer ."
-                        + " FILTER ( ?programmer = wf:" + name + ") ."
+                        + " ?worker wf:hasAuxSkill ?auxSkill ."
+                        + " ?auxSkill wf:hasSkill ?skill ."
+                        + " ?auxSkill wf:hasLevel ?level ."
+                        + " OPTIONAL { ?auxSkill wf:hasPriority ?priority }."
+                        + " FILTER ( ?worker = wf:" + workerName + ") ."
                         + "	}";
 
         ResultSet results = sparql.excuteSparql(queryString);
 
-        return results.getRowNumber() != 1;
+        List<SkillDTO> infoList = new LinkedList<>();
+        if (results.hasNext()) {
+            QuerySolution querySolution = results.next();
+            SkillDTO skill = new SkillDTO(querySolution.getResource("skill").getLocalName(),
+                    querySolution.getLiteral("level").getInt());
+
+            if (querySolution.contains("priority")) {
+                skill.setPriority(querySolution.getLiteral("level").getInt());
+            }
+            infoList.add(skill);
+        }
+
+        return infoList;
     }
 
-    /**
-     * Removes existing programmer model.
-     * @param name
-     * @return
-     */
-    public boolean deleteProgrammer(String name){
-        if(!checkIfProgrammerNameExists(name) )  return false;
+    public boolean createNewWorker(WorkerDTO newWorker) {
+        if (utils.checkIfIndividualNameExists(newWorker.getName())) return false;
 
-        OntModel ontModel = sparql.connect();
-        String ontBase = sparql.getOntologyBase();
-
-        OntClass programmerClass = ontModel.getOntClass(ontBase + "Programmer");
-        Individual programmer = ontModel.createIndividual(ontBase + name, programmerClass);
-        programmer.remove();
-
-        sparql.saveModel(ontModel);
-
+        switch (newWorker.getClass().getName()) {
+            case "dto.ProgrammerDTO":
+                createNewProgrammerModel((ProgrammerDTO) newWorker);
+                break;
+            case "dto.JobDTO":
+                createNewJobModel((JobDTO) newWorker);
+                break;
+        }
         return true;
     }
 
-    public void addSkill(String name, SkillDTO skill){
+    private void createNewProgrammerModel(ProgrammerDTO newProgrammer) {
         OntModel ontModel = sparql.connect();
-        String ontBase = sparql.getOntologyBase();
 
-        Individual programmer = ontModel.getIndividual(ontBase + name);
+        OntClass programmerClass = ontModel.getOntClass(ontBase + "Programmer");
+        Individual programmer = ontModel.createIndividual(ontBase + newProgrammer.getName(), programmerClass);
+        Property emailProperty = ontModel.createProperty(ontBase + "hasEmail");
+        programmer.addProperty(emailProperty, newProgrammer.getEmail());
 
+        addSkills(newProgrammer.getName(), newProgrammer.getSkillList());
+
+        sparql.saveModel(ontModel);
+    }
+
+    private void createNewJobModel(JobDTO newJob) {
+        OntModel ontModel = sparql.connect();
+
+        OntClass jobClass = ontModel.getOntClass(ontBase + "Job");
+        Individual job = ontModel.createIndividual(ontBase + newJob.getName(), jobClass);
+
+        addSkills(newJob.getName(), newJob.getSkillList());
+
+        sparql.saveModel(ontModel);
+    }
+
+    public void addSkill(String workerName, SkillDTO skill) {
+        List<SkillDTO> skillDTOList = new LinkedList<>();
+        skillDTOList.add(skill);
+        addSkills(workerName, skillDTOList);
+    }
+
+    public void addSkills(String workerName, List<SkillDTO> skillList) {
+        if (skillList != null) {
+            OntModel ontModel = sparql.connect();
+            Individual worker = ontModel.getIndividual(ontBase + workerName);
+            for (SkillDTO skill : skillList) {
+                addSkillToWorker(worker, skill);
+            }
+            sparql.saveModel(ontModel);
+        }
+    }
+
+    private void addSkillToWorker(Individual worker, SkillDTO skill){
+        OntModel ontModel = sparql.connect();
         OntClass auxSkillClass = ontModel.getOntClass(ontBase + "Auxskill");
         Individual auxSkill = ontModel.createIndividual(auxSkillClass);
         auxSkill.addProperty(ontModel.createProperty(ontBase + "hasLevel"), String.valueOf(skill.getLevel()));
 
-        programmer.addProperty(ontModel.createProperty(ontBase + "hasAuxSkill"), auxSkill);
-        sparql.saveModel(ontModel);
-    };
-
-    public List<SkillDTO> getProgrammerSkills(String name){
-        List<SkillDTO> skillList = new LinkedList<>();
-
-        String queryString =
-                "SELECT ?skill ?level"
-                        + " WHERE {"
-                        + " ?programmer rdf:type wf:Programmer ."
-                        + " ?programmer wf:hasAuxSkill ?auxSkill ."
-                        + " ?auxSkill wf:hasSkill ?skill ."
-                        + " ?auxSkill wf:hasLevel ?level ."
-                        + " FILTER ( ?programmer = wf:" + name + " ) ."
-                        + "	}";
-
-        ResultSet results = sparql.excuteSparql(queryString);
-        while(results.hasNext()){
-            QuerySolution querySolution = results.nextSolution();
-            skillList.add(new SkillDTO(
-                    querySolution.getResource("skill").getLocalName(),
-                    querySolution.getLiteral("level").getInt(),
-                    0));
+        if (skill.getPriority() >= 0) {
+            auxSkill.addProperty(ontModel.createProperty(ontBase + "hasPriority"), String.valueOf(skill.getPriority()));
         }
 
-        return  skillList;
-    };
+        worker.addProperty(ontModel.createProperty(ontBase + "hasAuxSkill"), auxSkill);
+    }
+
+    /**
+     * Removes existing worker model.
+     *
+     * @param workerName
+     * @return
+     */
+    public boolean deleteWorker(String workerName) {
+        if (!utils.checkIfIndividualNameExists(workerName)) return false;
+
+        OntModel ontModel = sparql.connect();
+
+        Individual worker = ontModel.getIndividual(ontBase + workerName);
+        worker.remove();
+        sparql.saveModel(ontModel);
+
+        return true;
+    }
 }

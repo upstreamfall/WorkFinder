@@ -5,26 +5,16 @@ import java.util.List;
 /**
  * Created by Pawel on 2015-06-08.
  */
-public class ProgrammerDTO {
-    private String name;
+public class ProgrammerDTO extends WorkerDTO {
     private String email;
-    private List<SkillDTO> skillList;
-
-    public ProgrammerDTO(String name, String email){
-        this.name = name;
-        this.email = email;
-    }
 
     public ProgrammerDTO() {
-
+        super();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public ProgrammerDTO(String name, String email, List<SkillDTO> skillDTOList) {
+        super(name, skillDTOList);
+        this.email = email;
     }
 
     public String getEmail() {
@@ -33,14 +23,6 @@ public class ProgrammerDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<SkillDTO> getSkillList() {
-        return skillList;
-    }
-
-    public void setSkillList(List<SkillDTO> skillList) {
-        this.skillList = skillList;
     }
 
     @Override

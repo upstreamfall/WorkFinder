@@ -6,16 +6,19 @@ package dto;
 public class SkillDTO {
     private String name;
     private int level;
-    private int priority;
+    private int priority = -1;
 
-    public SkillDTO(String name, int level, int priority) {
-        this.name = name;
-        this.level = level;
-        this.priority = priority;
+    public SkillDTO() {
     }
 
-    public SkillDTO(){
+    public SkillDTO(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
 
+    public SkillDTO(String name, int level, int priority) {
+        this(name, level);
+        this.priority = priority;
     }
 
     public String getName() {
