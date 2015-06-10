@@ -2,8 +2,8 @@
 
 angular.module('WorkFinderApp')
   .service('skillsDataService', function ($http, apiRoot) {
-    this.getSkillsData = function () {
-      return $http.get(apiRoot + '/skillset');
+    this.getSkillsData = function (userId) {
+      return $http.get(apiRoot + '/user/' + userId + '/skillset');
     };
 
     this.getSkills = function () {
@@ -14,7 +14,7 @@ angular.module('WorkFinderApp')
       return $http.get(apiRoot + '/levels');
     };
 
-    this.updateSkillsData = function (skillsData) {
-      return $http.post(apiRoot + '/skillset', skillsData);
+    this.updateSkillsData = function (userId, skillsData) {
+      return $http.post(apiRoot + '/user/' + userId + '/skillset', skillsData);
     };
   });
