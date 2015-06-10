@@ -15,7 +15,8 @@ public class HelloRDFWorld {
 //        System.out.println(wf.createNewWorker(new ProgrammerDTO("Sam211", "sam@sa1m", null)));
 //        System.out.println(wf.deleteWorker("Sam211"));
 
-        wf.compareProgrammerWithJob("Adam", "MobileDeveloper");
+//        wf.compareProgrammerWithJob("Adam", "MobileDeveloper");
+        wf.countProgrammerScore("Adam", "MobileDeveloper");
     }
 
 }

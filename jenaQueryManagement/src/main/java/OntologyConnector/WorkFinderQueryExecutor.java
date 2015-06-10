@@ -1,6 +1,7 @@
 package OntologyConnector;
 
 import java.util.*;
+import java.util.function.BiConsumer;
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -72,6 +73,20 @@ public class WorkFinderQueryExecutor {
         }
 
         return compareList;
+    }
+
+    public int countProgrammerScore(String programmerName, String jobName) {
+        final int[] score = {0};
+
+        Map<String, Integer> compareList = compareProgrammerWithJob(programmerName, jobName);
+        compareList.forEach(new BiConsumer<String, Integer>() {
+            @Override
+            public void accept(String s, Integer integer) {
+                score[0] +=integer;
+            }
+        });
+
+        return score[0];
     }
 
     /**
