@@ -52,7 +52,17 @@ angular.module('WorkFinderApp')
       return [200, data];
     });
 
-    // Catch-all pass through for all other requests
+    $httpBackend.whenGET('/offers').respond(function () {
+      return [200, [
+        // TODO: add data, whatever makes sense
+        {id: 1, companyName: 'company'},
+        {id: 2, companyName: 'company'},
+        {id: 3, companyName: 'company'},
+        {id: 4, companyName: 'company'}]
+      ];
+    });
+
+    // Ca`tch-all pass through for all other requests
     $httpBackend.whenGET(/.*/).passThrough();
     $httpBackend.whenPOST(/.*/).passThrough();
     $httpBackend.whenDELETE(/.*/).passThrough();
