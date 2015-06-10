@@ -44,4 +44,13 @@ public class SkillDTO {
     public void setPriority(int priority) {
         this.priority = priority;
     }
+
+    @Override
+    public String toString() {
+        return "SkillDTO{" +
+                "name='" + name + '\'' +
+                ", level=" + level +
+                ", priority=" + priority +
+                '}';
+    }
 }
