@@ -34,4 +34,12 @@ angular.module('WorkFinderApp')
         toastr.success('There was a problem while saving data', 'Error!');
       });
     };
+
+    $scope.addSkill = function () {
+      $scope.skillSet.push({id: '', name: ''})
+    };
+
+    $scope.removeSkill = function () {
+      $scope.skillSet.pop();
+    };
   });
