@@ -92,7 +92,7 @@ public class WorkFinderQueryExecutor {
     /**
      * Get primary information about programmer without skills.
      *
-     * @param programmerId
+     * @param programmerName
      * @return
      */
     public ProgrammerDTO getProgrammerDataInfo(String programmerName) {
