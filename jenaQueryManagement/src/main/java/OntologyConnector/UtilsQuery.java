@@ -49,7 +49,7 @@ public class UtilsQuery {
         while (results.hasNext()) {
             QuerySolution querySolution = results.nextSolution();
 
-            skillList.add(querySolution.getLiteral("technology").toString());
+            skillList.add(querySolution.getResource("technology").getLocalName());
         }
 
         return skillList;
@@ -68,7 +68,7 @@ public class UtilsQuery {
         while (results.hasNext()) {
             QuerySolution querySolution = results.nextSolution();
 
-            skillList.add(querySolution.getLiteral("technology").toString());
+            skillList.add(querySolution.getResource("technology").getLocalName());
         }
 
         return skillList;

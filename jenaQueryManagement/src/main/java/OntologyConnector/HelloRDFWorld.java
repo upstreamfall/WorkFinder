@@ -5,8 +5,9 @@ import dto.ProgrammerDTO;
 public class HelloRDFWorld {
     public static void main(String[] args) {
         WorkFinderQueryExecutor wf = new WorkFinderQueryExecutor("workfinder.owl");
+        UtilsQuery util = new UtilsQuery();
 
-//		wf.getSkillRoots();
+		util.getSkillRoots();
 //		wf.getSubSkills("Developing");
 //		wf.getSubSkills("Database");
 //		wf.getSkillIndividuals("MobileTechnology");
@@ -16,7 +17,7 @@ public class HelloRDFWorld {
 //        System.out.println(wf.deleteWorker("Sam211"));
 
 //        wf.compareProgrammerWithJob("Adam", "MobileDeveloper");
-        wf.countProgrammerScore("Adam", "MobileDeveloper");
+//        wf.countProgrammerScore("Adam", "MobileDeveloper");
     }
 
 }
