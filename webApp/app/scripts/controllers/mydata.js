@@ -36,7 +36,7 @@ angular.module('WorkFinderApp')
     };
 
     $scope.addSkill = function () {
-      $scope.skillSet.push({id: '', name: ''})
+      $scope.skillSet.push({id: '', name: ''});
     };
 
     $scope.removeSkill = function () {
