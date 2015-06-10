@@ -23,7 +23,7 @@ public class WorkFinderQueryExecutor {
         sparql.setOntologyFilePath(ontologyFilePath);
     }
 
-    public Map<String, Integer> compareProgrammerWithJob(String programmerId, String jobId) {
+    public Map<String, Integer> compareProgrammerWithJob(String programmerName, String jobName) {
         String queryString =
                 "SELECT * WHERE {\n" +
                         "\t{\tSELECT  ?programmer ?skill (?jobPriority*(?levelevel - ?jobLevel) AS ?difference)\n" +
@@ -37,8 +37,8 @@ public class WorkFinderQueryExecutor {
                         "\t\t?jobAuxSkill wf:hasLevel ?jobLevel .\n" +
                         "\t\t?jobAuxSkill wf:hasPriority ?jobPriority .\n" +
                         "\t\tFILTER ( ?skill = ?jobSkill) .\n" +
-                        "\t\tFILTER (?programmer = wf:Adam) .\n" +
-                        "\t\tFILTER (?job = wf:MobileDeveloper) .}\n" +
+                        "\t\tFILTER (?programmer = wf:" + programmerName + ") .\n" +
+                        "\t\tFILTER (?job = wf:" + jobName + ") .}\n" +
                         "\t}\n" +
                         "\tUNION \n" +
                         "\t{\tSELECT ?skill ((-1)*?jobPriority*?level AS ?difference) WHERE {\n" +
@@ -49,7 +49,7 @@ public class WorkFinderQueryExecutor {
                         "\t\t\t?jobAuxSkill wf:hasSkill ?skill .\n" +
                         "\t\t\t?jobAuxSkill wf:hasLevel ?level .\n" +
                         "\t\t\t?jobAuxSkill wf:hasPriority ?jobPriority .\n" +
-                        "\t\t\tFILTER (?job = wf:MobileDeveloper) .}\n" +
+                        "\t\t\tFILTER (?job = wf:" + jobName + ") .}\n" +
                         "\t\t}\n" +
                         "\t\tMINUS {\n" +
                         "\t\t\tSELECT ?skill\n" +
@@ -57,11 +57,11 @@ public class WorkFinderQueryExecutor {
                         "\t\t\t?programmer rdf:type wf:Programmer .\n" +
                         "\t\t\t?programmer wf:hasAuxSkill ?auxSkill .\n" +
                         "\t\t\t?auxSkill wf:hasSkill ?skill .\n" +
-                        "\t\t\tFILTER (?programmer = wf:Adam) . }\n" +
+                        "\t\t\tFILTER (?programmer = wf:"+ programmerName + ") . }\n" +
                         "\t\t\t}\n" +
                         "\t\t}\n" +
                         "\t}\n" +
-                        "}\n";
+                        "}";
 
         ResultSet results = sparql.excuteSparql(queryString);
 
@@ -95,14 +95,14 @@ public class WorkFinderQueryExecutor {
      * @param programmerId
      * @return
      */
-    public ProgrammerDTO getProgrammerDataInfo(String programmerId) {
+    public ProgrammerDTO getProgrammerDataInfo(String programmerName) {
         String queryString =
                 "SELECT *"
                         + " WHERE {"
                         + "	?programmer rdf:type wf:Programmer ."
                         + " OPTIONAL { ?programmer wf:hasEmail ?email ."
                         + " }"
-                        + " FILTER ( ?programmer = wf:" + programmerId + ") ."
+                        + " FILTER ( ?programmer = wf:" + programmerName + ") ."
                         + "	}";
 
         ResultSet results = sparql.excuteSparql(queryString);
