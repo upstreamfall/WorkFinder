@@ -7,7 +7,6 @@ angular.module('WorkFinderApp')
     };
 
     $scope.headerLinks = [
-      {name: 'Home', link: '/'},
       {name: 'Offers', link: '/offers'},
       {name: 'MyData', link: '/myData'}
     ];
