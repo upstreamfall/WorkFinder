@@ -1,8 +1,18 @@
 <div class="container">
-  <div class="col-md-12 col-sm-12 col-sx-12">
-    <div class="row" ng-repeat="offer in offers">
-      <div class="col-md-6 col-sm-6 col-sx-6">{{offer.id}}</div>
-      <div class="col-md-6 col-sm-6 col-sx-6">{{offer.companyName}}</div>
-    </div>
-  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>company</th>
+        <th>position</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="offer in offers">
+        <td>{{offer.id}}</td>
+        <td>{{offer.companyName}}</td>
+        <td>{{offer.position}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

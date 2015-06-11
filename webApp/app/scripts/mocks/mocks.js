@@ -56,10 +56,10 @@ angular.module('WorkFinderApp')
     $httpBackend.whenGET('/user/1/offers').respond(function () {
       return [200, [
         // TODO: add data, whatever makes sense
-        {id: 1, companyName: 'company'},
-        {id: 2, companyName: 'company'},
-        {id: 3, companyName: 'company'},
-        {id: 4, companyName: 'company'}]
+        {id: 1, position: 'Senior dev', companyName: 'Microsoft'},
+        {id: 2, position: 'Devops', companyName: 'Apple'},
+        {id: 3, position: 'Senior dev', companyName: 'Allegro'},
+        {id: 4, position: 'dev', companyName: 'Atinea'}]
       ];
     });
 
