@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('WorkFinderApp')
-  .controller('HeaderCtrl', function ($scope, $location, loginService) {
+  .controller('HeaderCtrl', function (localStorageService, $scope, $location, loginService) {
     $scope.logout = function () {
       loginService.logout();
     };
@@ -26,4 +26,6 @@ angular.module('WorkFinderApp')
     $scope.setActive = function (index) {
       $scope.activeIndex = index;
     };
+
+    $scope.userName = localStorageService.get('login');
   });

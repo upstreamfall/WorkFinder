@@ -5,6 +5,7 @@ angular.module('WorkFinderApp')
     $httpBackend.whenPOST('/login').respond(function (method, url, data) {
         return [200, {
           login: angular.fromJson(data).login,
+          id: 1,
           name: 'John Smith',
           email: 'john.smith@gmail.com',
           birthday: '2015-04-16',
@@ -13,14 +14,14 @@ angular.module('WorkFinderApp')
         }, {}];
     });
 
-    $httpBackend.whenGET('/userData').respond(function () {
+    $httpBackend.whenGET('/user/1/userData').respond(function () {
       return [200, {
         name: 'John Smith',
         email: 'john.smith@gmail.com'
       }];
     });
 
-    $httpBackend.whenPOST('/userData').respond(function (method, url, data) {
+    $httpBackend.whenPOST('/user/1/userData').respond(function (method, url, data) {
       return [200, data];
     });
 
@@ -32,7 +33,7 @@ angular.module('WorkFinderApp')
       ]];
     });
 
-    $httpBackend.whenGET('/skillset').respond(function () {
+    $httpBackend.whenGET('/user/1/skillset').respond(function () {
       return [200, [
         {skillId: 1, levelId: 2},
         {skillId: 3, levelId: 3}
@@ -48,11 +49,11 @@ angular.module('WorkFinderApp')
       ]];
     });
 
-    $httpBackend.whenPOST('/skillset').respond(function (method, url, data) {
+    $httpBackend.whenPOST('/user/1/skillset').respond(function (method, url, data) {
       return [200, data];
     });
 
-    $httpBackend.whenGET('/offers').respond(function () {
+    $httpBackend.whenGET('/user/1/offers').respond(function () {
       return [200, [
         // TODO: add data, whatever makes sense
         {id: 1, companyName: 'company'},

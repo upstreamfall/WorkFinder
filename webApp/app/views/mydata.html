@@ -15,6 +15,12 @@
     <div ng-repeat="skillItem in skillSet">
       <skill-select skills="$parent.skills" levels="$parent.levels" skill-level="skillItem"></skill-select>
     </div>
-    <button type="submit" class="btn btn-default" ng-click="submitSkillsData(skillSet)">Submit</button>
+    <div>
+      <a href="" class="glyphicon glyphicon-plus" ng-click="addSkill()"></a>
+      <a href="" class="glyphicon glyphicon-minus" ng-click="removeSkill()"></a>
+    </div>
+    <div class="submit-button-row">
+      <button type="submit" class="btn btn-default" ng-click="submitSkillsData(skillSet)">Submit</button>
+    </div>
   </form>
 </div>
