@@ -1,9 +1,17 @@
 'use strict';
 
 angular.module('WorkFinderApp')
-  .controller('OffersCtrl', function ($rootScope, $scope, offersService) {
+  .controller('OffersCtrl', function ($timeout, $rootScope, $scope, offersService) {
     var userId = $rootScope.userId;
-    offersService.getOffers(userId).success(function (offers) {
+
+    $scope.fetchOffers = function () {
+      $scope.showSpinner = true;
+      offersService.getOffers(userId).success(function (offers) {
         $scope.offers = offers;
+        $timeout(function() {
+          $scope.showSpinner = false;
+          $scope.showOffers = true;
+        }, 500);
       });
+    };
   });
