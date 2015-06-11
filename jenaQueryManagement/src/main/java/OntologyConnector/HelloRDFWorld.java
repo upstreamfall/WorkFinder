@@ -7,7 +7,7 @@ public class HelloRDFWorld {
         WorkFinderQueryExecutor wf = new WorkFinderQueryExecutor("workfinder.owl");
         UtilsQuery util = new UtilsQuery();
 
-		util.getSkillRoots();
+//		util.getSkillRoots();
 //		wf.getSubSkills("Developing");
 //		wf.getSubSkills("Database");
 //		wf.getSkillIndividuals("MobileTechnology");
@@ -18,6 +18,7 @@ public class HelloRDFWorld {
 
 //        wf.compareProgrammerWithJob("Adam", "MobileDeveloper");
 //        wf.countProgrammerScore("Adam", "MobileDeveloper");
+        util.getAllSkills();
     }
 
 }

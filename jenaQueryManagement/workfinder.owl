@@ -146,7 +146,7 @@
 
     <owl:DatatypeProperty rdf:about="&wf;hasLevel">
         <rdfs:domain rdf:resource="&wf;AuxSkill"/>
-        <rdfs:range rdf:resource="&xsd;int"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
 
@@ -256,14 +256,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#NetworkAdministration -->
-
-    <owl:Class rdf:about="&wf;NetworkAdministration">
-        <rdfs:subClassOf rdf:resource="&wf;Developing"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#NoSQL -->
 
     <owl:Class rdf:about="&wf;NoSQL">
@@ -366,10 +358,55 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#AllSkills -->
+
+    <owl:NamedIndividual rdf:about="&wf;AllSkills">
+        <rdf:type rdf:resource="&wf;Programmer"/>
+        <hasSkill rdf:resource="&wf;Android"/>
+        <hasSkill rdf:resource="&wf;AngularJS"/>
+        <hasSkill rdf:resource="&wf;BackboneJS"/>
+        <hasSkill rdf:resource="&wf;CSS3"/>
+        <hasSkill rdf:resource="&wf;CouchDB"/>
+        <hasSkill rdf:resource="&wf;ExpressJS"/>
+        <hasSkill rdf:resource="&wf;HPQC"/>
+        <hasSkill rdf:resource="&wf;HTML5"/>
+        <hasSkill rdf:resource="&wf;IOS"/>
+        <hasSkill rdf:resource="&wf;JSP"/>
+        <hasSkill rdf:resource="&wf;JUnit"/>
+        <hasSkill rdf:resource="&wf;Jasmine"/>
+        <hasSkill rdf:resource="&wf;JavaScript"/>
+        <hasSkill rdf:resource="&wf;MicrosoftSQLServer"/>
+        <hasSkill rdf:resource="&wf;MockJS"/>
+        <hasSkill rdf:resource="&wf;MongoDB"/>
+        <hasSkill rdf:resource="&wf;MySQL"/>
+        <hasSkill rdf:resource="&wf;NodeJS"/>
+        <hasSkill rdf:resource="&wf;Oracle"/>
+        <hasSkill rdf:resource="&wf;PostgreSQL"/>
+        <hasSkill rdf:resource="&wf;Protractor"/>
+        <hasSkill rdf:resource="&wf;ReactJS"/>
+        <hasSkill rdf:resource="&wf;SQLite"/>
+        <hasSkill rdf:resource="&wf;User_Experience_Design"/>
+        <hasSkill rdf:resource="&wf;User_Interface_Design"/>
+        <hasSkill rdf:resource="&wf;Vaadin"/>
+        <hasSkill rdf:resource="&wf;Voldemort"/>
+        <hasSkill rdf:resource="&wf;WebDesign"/>
+        <hasSkill rdf:resource="&wf;jQuery"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#Android -->
 
     <owl:NamedIndividual rdf:about="&wf;Android">
         <rdf:type rdf:resource="&wf;MobileTechnology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#AngularJS -->
+
+    <owl:NamedIndividual rdf:about="&wf;AngularJS">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
     </owl:NamedIndividual>
     
 
@@ -457,6 +494,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#BackboneJS -->
+
+    <owl:NamedIndividual rdf:about="&wf;BackboneJS">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#CSS3 -->
+
+    <owl:NamedIndividual rdf:about="&wf;CSS3">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#CouchDB -->
 
     <owl:NamedIndividual rdf:about="&wf;CouchDB">
@@ -475,10 +528,66 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#ExpressJS -->
+
+    <owl:NamedIndividual rdf:about="&wf;ExpressJS">
+        <rdf:type rdf:resource="&wf;BackEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#HPQC -->
+
+    <owl:NamedIndividual rdf:about="&wf;HPQC">
+        <rdf:type rdf:resource="&wf;Testing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#HTML5 -->
+
+    <owl:NamedIndividual rdf:about="&wf;HTML5">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#IOS -->
 
     <owl:NamedIndividual rdf:about="&wf;IOS">
         <rdf:type rdf:resource="&wf;MobileTechnology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#JSP -->
+
+    <owl:NamedIndividual rdf:about="&wf;JSP">
+        <rdf:type rdf:resource="&wf;BackEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#JUnit -->
+
+    <owl:NamedIndividual rdf:about="&wf;JUnit">
+        <rdf:type rdf:resource="&wf;Testing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#Jasmine -->
+
+    <owl:NamedIndividual rdf:about="&wf;Jasmine">
+        <rdf:type rdf:resource="&wf;Testing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#JavaScript -->
+
+    <owl:NamedIndividual rdf:about="&wf;JavaScript">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
     </owl:NamedIndividual>
     
 
@@ -527,6 +636,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#MockJS -->
+
+    <owl:NamedIndividual rdf:about="&wf;MockJS">
+        <rdf:type rdf:resource="&wf;Testing"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#MongoDB -->
 
     <owl:NamedIndividual rdf:about="&wf;MongoDB">
@@ -551,6 +668,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#NodeJS -->
+
+    <owl:NamedIndividual rdf:about="&wf;NodeJS">
+        <rdf:type rdf:resource="&wf;BackEnd"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#Oracle -->
 
     <owl:NamedIndividual rdf:about="&wf;Oracle">
@@ -563,6 +688,22 @@
 
     <owl:NamedIndividual rdf:about="&wf;PostgreSQL">
         <rdf:type rdf:resource="&wf;RelationalDatabase"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#Protractor -->
+
+    <owl:NamedIndividual rdf:about="&wf;Protractor">
+        <rdf:type rdf:resource="&wf;Testing"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#ReactJS -->
+
+    <owl:NamedIndividual rdf:about="&wf;ReactJS">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
     </owl:NamedIndividual>
     
 
@@ -599,16 +740,26 @@
     
 
 
-    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#Sam23 -->
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#User_Experience_Design -->
 
-    <owl:NamedIndividual rdf:about="&wf;Sam23">
-        <rdf:type rdf:resource="&wf;Programmer"/>
-        <hasEmail>sam@sam</hasEmail>
-        <hasAuxSkill>
-            <rdf:Description>
-                <hasLevel>5</hasLevel>
-            </rdf:Description>
-        </hasAuxSkill>
+    <owl:NamedIndividual rdf:about="&wf;User_Experience_Design">
+        <rdf:type rdf:resource="&wf;Design"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#User_Interface_Design -->
+
+    <owl:NamedIndividual rdf:about="&wf;User_Interface_Design">
+        <rdf:type rdf:resource="&wf;Design"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#Vaadin -->
+
+    <owl:NamedIndividual rdf:about="&wf;Vaadin">
+        <rdf:type rdf:resource="&wf;BackEnd"/>
     </owl:NamedIndividual>
     
 
@@ -621,10 +772,26 @@
     
 
 
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#WebDesign -->
+
+    <owl:NamedIndividual rdf:about="&wf;WebDesign">
+        <rdf:type rdf:resource="&wf;Design"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#WindowsPhone -->
 
     <owl:NamedIndividual rdf:about="&wf;WindowsPhone">
         <rdf:type rdf:resource="&wf;MobileTechnology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/pawel/ontologies/workfinder#jQuery -->
+
+    <owl:NamedIndividual rdf:about="&wf;jQuery">
+        <rdf:type rdf:resource="&wf;FrontEnd"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 

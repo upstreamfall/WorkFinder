@@ -73,4 +73,24 @@ public class UtilsQuery {
 
         return skillList;
     }
+
+
+    public List<String> getAllSkills() {
+        String queryString =
+                "SELECT ?skill "
+                + "WHERE { ?subject wf:hasSkill ?skill."
+                + "FILTER ( ?subject = wf:AllSkills )."
+                        + "	}";
+
+        ResultSet results = sparql.excuteSparql(queryString);
+
+        List<String> skillList = new ArrayList();
+        while (results.hasNext()) {
+            QuerySolution querySolution = results.nextSolution();
+
+            skillList.add(querySolution.getResource("skill").getLocalName());
+        }
+
+        return skillList;
+    }
 }
