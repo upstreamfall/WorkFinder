@@ -41,7 +41,7 @@
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
             <ul class="nav navbar-nav">
-              <li ng-repeat="link in headerLinks" ng-class="{active: isActive($index)}" ng-click="setActive($index)"><a ng-href="#{{::link.link}}">{{::link.name}}</a></li>
+              <li ng-repeat="link in headerLinks" ng-class="{active: isActive($index)}" ng-click="setActive($index)"><a ng-href="#{{::link.link}}" ng-bind="::link.name"></a></li>
               <li><a ng-click="logout()" href=""><strong>Log Out</strong></a></li>
             </ul>
           </div>

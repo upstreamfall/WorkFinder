@@ -11,7 +11,7 @@ angular.module('WorkFinderApp')
         $timeout(function() {
           $scope.showSpinner = false;
           $scope.showOffers = true;
-        }, 500);
+        }, 1000);
       });
     };
   });
