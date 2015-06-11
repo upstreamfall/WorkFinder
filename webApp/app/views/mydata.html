@@ -12,9 +12,26 @@
   </form>
 
   <form class="professional-data-form">
-    <div ng-repeat="skillItem in skillSet">
-      <skill-select skills="$parent.skills" levels="$parent.levels" skill-level="skillItem"></skill-select>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Skill</th>
+        <th>Level</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="skill in skillSet">
+        <td>{{skill.name}}</td>
+        <td>{{skill.level}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div ng-repeat="root in roots">
+      <select class="form-control col-md-3 col-sm-3 col-sx-3" ng-model="root.name" ng-options="skill.name as skill.name for skill in skillsRoot"></select>
     </div>
+    <!--<div ng-repeat="skillItem in skillSet">-->
+      <!--<skill-select skills="$parent.skills" levels="$parent.levels" skill-level="skillItem"></skill-select>-->
+    <!--</div>-->
     <div>
       <a href="" class="glyphicon glyphicon-plus" ng-click="addSkill()"></a>
       <a href="" class="glyphicon glyphicon-minus" ng-click="removeSkill()"></a>

@@ -25,18 +25,82 @@ angular.module('WorkFinderApp')
       return [200, data];
     });
 
-    $httpBackend.whenGET('/skills').respond(function () {
+    // mało restowo, ale jebać
+    $httpBackend.whenGET('/skills/Backend/subskills').respond(function () {
       return [200, [
-        {id: 1, name: 'Java'},
-        {id: 2, name: 'JS'},
-        {id: 3, name: 'MeteorJS'}
+        {name: 'C#'},
+        {name: 'Java'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/Frontend/subskills').respond(function () {
+      return [200, [
+        {name: 'JS'},
+        {name: 'CSS'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/JS/subskills').respond(function () {
+      return [200, [
+        {name: 'Angular'},
+        {name: 'Meteor'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/Angular/subskills').respond(function () {
+      return [200, []];
+    });
+
+    $httpBackend.whenGET('/skills/Meteor/subskills').respond(function () {
+      return [200, []];
+    });
+
+    $httpBackend.whenGET('/skills/C#/subskills').respond(function () {
+      return [200, [
+        {name: 'EF'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/Java/subskills').respond(function () {
+      return [200, []];
+    });
+
+    $httpBackend.whenGET('/skills/Java/skillsIndividual').respond(function () {
+      return [200, [
+        {name: 'jakiesgowno'},
+        {name: 'jakiesgowno2'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/EF/skillsIndividual').respond(function () {
+      return [200, [
+        {name: 'jakiesgowno3'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/Angular/skillsIndividual').respond(function () {
+      return [200, [
+        {name: 'jakiesgowno4'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skills/Meteor/skillsIndividual').respond(function () {
+      return [200, [
+        {name: 'jakiesgowno5'}
+      ]];
+    });
+
+    $httpBackend.whenGET('/skillsRoot').respond(function () {
+      return [200, [
+        {name: 'Backend'},
+        {name: 'Frontend'}
       ]];
     });
 
     $httpBackend.whenGET('/user/1/skillset').respond(function () {
       return [200, [
-        {skillId: 1, levelId: 2},
-        {skillId: 3, levelId: 3}
+        {name: 'Java', level: 2},
+        {name: 'JS', level: 3}
       ]];
     });
 

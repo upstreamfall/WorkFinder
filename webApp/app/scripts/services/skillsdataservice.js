@@ -6,8 +6,8 @@ angular.module('WorkFinderApp')
       return $http.get(apiRoot + '/user/' + userId + '/skillset');
     };
 
-    this.getSkills = function () {
-      return $http.get(apiRoot + '/skills');
+    this.getSkillsRoot = function () {
+      return $http.get(apiRoot + '/skillsRoot');
     };
 
     this.getLevels = function () {
