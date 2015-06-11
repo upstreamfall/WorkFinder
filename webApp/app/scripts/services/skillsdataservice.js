@@ -10,6 +10,10 @@ angular.module('WorkFinderApp')
       return $http.get(apiRoot + '/skillsRoot');
     };
 
+    this.getSubSkills = function (name) {
+      return $http.get(apiRoot + '/skills/' + name + '/subskills');
+    };
+
     this.getLevels = function () {
       return $http.get(apiRoot + '/levels');
     };

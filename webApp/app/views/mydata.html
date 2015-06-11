@@ -27,12 +27,14 @@
       </tbody>
     </table>
     <div ng-repeat="root in roots">
-      <select class="form-control col-md-3 col-sm-3 col-sx-3" ng-model="root.name" ng-options="skill.name as skill.name for skill in skillsRoot"></select>
+      <div class="col-md-3 col-sm-3 col-sx-3">
+        <select class="form-control" ng-click="addSubSkill($index, $event)" ng-model="root.name" ng-options="skill.name as skill.name for skill in skillsRoot"></select>
+      </div>
     </div>
     <!--<div ng-repeat="skillItem in skillSet">-->
       <!--<skill-select skills="$parent.skills" levels="$parent.levels" skill-level="skillItem"></skill-select>-->
     <!--</div>-->
-    <div>
+    <div class="col-md-12 col-sm-12 col-sx-12">
       <a href="" class="glyphicon glyphicon-plus" ng-click="addSkill()"></a>
       <a href="" class="glyphicon glyphicon-minus" ng-click="removeSkill()"></a>
     </div>

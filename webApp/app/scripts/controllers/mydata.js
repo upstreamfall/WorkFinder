@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('WorkFinderApp')
-  .controller('MydataCtrl', function ($rootScope, $scope, userDataService, skillsDataService, toastr) {
+  .controller('MydataCtrl', function ($rootScope, $compile, $scope, userDataService, skillsDataService, toastr) {
     var userId = $rootScope.userId;
     $scope.roots = [{name: '' }]
 
@@ -35,5 +35,12 @@ angular.module('WorkFinderApp')
       }).error(function () {
         toastr.success('There was a problem while saving data', 'Error!');
       });
+    };
+
+    $scope.addSubSkill = function(rootIndex, event) {
+        skillsDataService.getSubSkills($scope.roots[rootIndex].name).success(function (subskills) {
+          var skillsSelect = $compile('<sub-skills-select ng-options="skill.name as skill.name for skill in subskills"></sub-skills-select>')( $scope );
+          angular.element(event.currentTarget).parent().append(skillsSelect);
+        });
     };
   });

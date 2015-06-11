@@ -1,0 +1,6 @@
+<div class="row skills-row">
+  <div class="col-md-6 col-sm-6 col-sx-6">
+    <select class="form-control" ng-model="skillLevel.skillName"
+            ng-options="skill.name as skill.name for skill in skills" ng-click="addSubSkill(skill.name, $event)"></select>
+  </div>
+</div>
