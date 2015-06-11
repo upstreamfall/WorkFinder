@@ -32,6 +32,7 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/angular-toastr/dist/angular-toastr.tpls.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
