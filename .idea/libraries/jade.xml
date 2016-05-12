@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="jade">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Dysk Google/jade/JADE-all-4.4.0/JADE-bin-4.4.0/jade/lib/jade.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Dysk Google/jade/JADE-all-4.4.0/JADE-src-4.4.0/jade/src" />
+    </SOURCES>
+  </library>
+</component>
