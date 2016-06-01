@@ -7,10 +7,14 @@ import java.io.Serializable;
  */
 public class Skill implements Serializable {
     private final String name;
-    private final int level;
+    private int level;
 
     public Skill(String name, int level) {
         this.name = name;
+        this.level = level;
+    }
+
+    public void updateLevel(int level) {
         this.level = level;
     }
 

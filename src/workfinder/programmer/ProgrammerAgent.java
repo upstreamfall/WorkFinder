@@ -2,6 +2,11 @@ package workfinder.programmer;
 
 import jade.core.AID;
 import workfinder.utils.ExtendedAgent;
+import workfinder.utils.dto.GlobalParameters;
+import workfinder.utils.dto.Person;
+import workfinder.utils.dto.Skill;
+
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -9,7 +14,8 @@ import static java.lang.Thread.sleep;
  * Created by pbielicki on 04.05.2016.
  */
 public class ProgrammerAgent extends ExtendedAgent {
-    AID ontologyProxyAgency;
+    private Person _person;
+    private List<Skill> _skills;
 
     @Override
     protected void setup() {
@@ -26,6 +32,10 @@ public class ProgrammerAgent extends ExtendedAgent {
     }
 
     private void configureParams() {
-        ontologyProxyAgency = new AID("OntologyMaster", AID.ISLOCALNAME);
+    }
+
+    public void saveSkillList(List<Skill> skills) {
+        this._skills = skills;
+        printMessage("receives: " + skills);
     }
 }

@@ -5,6 +5,7 @@ import jade.core.behaviours.OneShotBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
+import workfinder.utils.dto.GlobalParameters;
 import workfinder.utils.dto.Skill;
 
 import java.io.Serializable;
@@ -15,18 +16,20 @@ import java.util.List;
  */
 public class GetOntologyBehaviour extends OneShotBehaviour {
     private String conversationId;
+    private ProgrammerAgent agent;
 
     @Override
     public void action() {
+        agent = ((ProgrammerAgent)myAgent);
         ACLMessage request = new ACLMessage(ACLMessage.REQUEST);
-        request.addReceiver(((ProgrammerAgent)myAgent).ontologyProxyAgency);
-        String messageType = "GET_ONTOLOGY_DATA";
+        request.addReceiver(GlobalParameters.getInstance().ontologyProxyAgency);
+        String messageType = "GET_SKILLS";
         conversationId = messageType + "-" + System.currentTimeMillis();
         request.setConversationId(conversationId);
         request.setContent(messageType);
 
-        myAgent.addBehaviour(new HandleResponseBehaviour());
-        myAgent.send(request);
+        agent.addBehaviour(new HandleResponseBehaviour());
+        agent.send(request);
     }
 
     private class HandleResponseBehaviour extends Behaviour {
@@ -35,18 +38,18 @@ public class GetOntologyBehaviour extends OneShotBehaviour {
         @Override
         public void action() {
             MessageTemplate messageTemplate = MessageTemplate.MatchConversationId(conversationId);
-            ACLMessage response = myAgent.receive(messageTemplate);
+            ACLMessage response = agent.receive(messageTemplate);
             if (response != null) {
                 if (response.getPerformative() == ACLMessage.INFORM) {
                     try {
                         Serializable contentObject = response.getContentObject();
                         List<Skill> skills = (List<Skill>) contentObject;
-                        ((ProgrammerAgent) myAgent).printMessage("receives: " + skills);
+                        agent.saveSkillList(skills);
                     } catch (UnreadableException e) {
                         e.printStackTrace();
                     }
                 }else {
-                    ((ProgrammerAgent) myAgent).printMessage("doesn't exist in ontology");
+                    agent.printMessage("doesn't exist in ontology");
                 }
                 isDone = true;
 

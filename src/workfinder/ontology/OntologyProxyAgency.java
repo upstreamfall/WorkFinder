@@ -1,4 +1,4 @@
-package workfinder.utils.ontology;
+package workfinder.ontology;
 
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -12,6 +12,8 @@ import workfinder.utils.ExtendedAgent;
  * Created by pbielicki on 04.05.2016.
  */
 public class OntologyProxyAgency extends ExtendedAgent {
+    String packagePath = this.getClass().getPackage().getName();
+
     @Override
     protected void setup() {
         super.setup();
@@ -41,11 +43,11 @@ public class OntologyProxyAgency extends ExtendedAgent {
         Object[] params = new Object[]{message};
         try {
             agentController = containerController.createNewAgent(
-                    agentName, "workfinder.utils.ontology."+agentClassName + "Agent", params);
+                    agentName, packagePath + "." + agentClassName + "Agent", params);
             agentController.start();
         } catch (StaleProxyException e) {
             e.printStackTrace();
-            printMessage("received unsupported message type");
+            printMessage("received unsupported message type: " + content);
         }
     }
 }

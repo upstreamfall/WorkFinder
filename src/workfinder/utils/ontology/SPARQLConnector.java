@@ -10,10 +10,6 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.util.FileManager;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 public class SPARQLConnector {
     private SPARQLConnector() {
     }

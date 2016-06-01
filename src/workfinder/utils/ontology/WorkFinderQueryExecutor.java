@@ -1,19 +1,13 @@
 package workfinder.utils.ontology;
 
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntClass;
-import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.rdf.model.Property;
 //import dto.JobDTO;
 //import dto.ProgrammerDTO;
 //import dto.SkillDTO;
 //import dto.WorkerDTO;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 

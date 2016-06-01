@@ -4,6 +4,7 @@ import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.query.ResultSetFactory;
 import com.hp.hpl.jena.query.ResultSetRewindable;
+import workfinder.utils.dto.Person;
 import workfinder.utils.dto.Skill;
 
 import java.util.ArrayList;
@@ -48,5 +49,25 @@ public class UtilsQuery {
         }
 
         return skillList;
+    }
+
+    public Person getPersonData(String personName) {
+        String queryString =
+                "SELECT ?skill ?level "
+                        + "WHERE { ?subject wf:hasAuxSkill ?auxSkill."
+                        + "?auxSkill wf:hasSkill ?skill."
+                        + "?auxSkill wf:hasLevel ?level."
+                        + "FILTER ( ?subject = wf:"+personName+" )."
+                        + "}";
+
+        ResultSet results = sparql.excuteSparql(queryString);
+        while (results.hasNext()) {
+            QuerySolution querySolution = results.nextSolution();
+
+//            skillList.add(new Skill(querySolution.getResource("skill").getLocalName(),
+//                    querySolution.getLiteral("level").getInt()));
+        }
+
+        return null;
     }
 }
